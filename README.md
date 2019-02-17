@@ -1,2 +1,2 @@
-# reddit_on_fire
-Fire TV app
+# fire_tv_for_reddit
+Reddit Fire TV app
