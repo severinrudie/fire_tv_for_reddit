@@ -1,29 +1,10 @@
 package seveida.firetvforreddit.response.objects
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
-
-class Preview {
-
-    @Json(name = "images")
-    var images: List<Image>? = null
-    @Json(name = "enabled")
-    var enabled: Boolean = false
-
-    /**
-     * No args constructor for use in serialization
-     *
-     */
-    constructor() {}
-
-    /**
-     *
-     * @param enabled
-     * @param images
-     */
-    constructor(images: List<Image>, enabled: Boolean) : super() {
-        this.images = images
-        this.enabled = enabled
-    }
-
-}
+@JsonClass(generateAdapter = true)
+data class Preview(
+    @Json(name = "images") val images: List<Image>? = null,
+    @Json(name = "enabled") val enabled: Boolean = false
+)

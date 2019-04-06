@@ -1,32 +1,11 @@
 package seveida.firetvforreddit.response.objects
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
-class Resolution {
-
-    @Json(name = "url")
-    var url: String
-    @Json(name = "width")
-    var width: Int = 0
-    @Json(name = "height")
-    var height: Int = 0
-
-    /**
-     * No args constructor for use in serialization
-     *
-     */
-    constructor() {}
-
-    /**
-     *
-     * @param height
-     * @param width
-     * @param url
-     */
-    constructor(url: String, width: Int, height: Int) : super() {
-        this.url = url
-        this.width = width
-        this.height = height
-    }
-
-}
+@JsonClass(generateAdapter = true)
+data class Resolution(
+    @Json(name = "url") val url: String,
+    @Json(name = "width") val width: Int = 0,
+    @Json(name = "height") val height: Int = 0
+)

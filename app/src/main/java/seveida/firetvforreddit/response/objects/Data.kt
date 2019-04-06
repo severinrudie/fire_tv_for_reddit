@@ -1,40 +1,14 @@
 package seveida.firetvforreddit.response.objects
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
-class Data {
+@JsonClass(generateAdapter = true)
+data class Data(
 
-    @Json(name = "modhash")
-    var modhash: String
-    @Json(name = "dist")
-    var dist: Int = 0
-    @Json(name = "children")
-    var children: List<Child>? = null
-    @Json(name = "after")
-    var after: String
-    @Json(name = "before")
-    var before: Any
-
-    /**
-     * No args constructor for use in serialization
-     *
-     */
-    constructor() {}
-
-    /**
-     *
-     * @param after
-     * @param before
-     * @param children
-     * @param modhash
-     * @param dist
-     */
-    constructor(modhash: String, dist: Int, children: List<Child>, after: String, before: Any) : super() {
-        this.modhash = modhash
-        this.dist = dist
-        this.children = children
-        this.after = after
-        this.before = before
-    }
-
-}
+    @Json(name = "modhash") val modhash: String,
+    @Json(name = "dist") val dist: Int = 0,
+    @Json(name = "children") val children: List<Child>? = null,
+    @Json(name = "after") val after: String,
+    @Json(name = "before") val before: Any
+)
