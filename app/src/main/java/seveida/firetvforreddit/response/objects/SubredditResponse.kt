@@ -2,8 +2,6 @@ package seveida.firetvforreddit.response.objects
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import seveida.firetvforreddit.domain.objects.SubredditDetails
-import seveida.firetvforreddit.domain.objects.SubredditMetadata
 
 @JsonClass(generateAdapter = true)
 data class SubredditResponse (
