@@ -5,18 +5,12 @@ import seveida.firetvforreddit.response.objects.Child
 import seveida.firetvforreddit.response.objects.SubredditResponse
 
 data class SubredditDetails(val subredditMetadata: SubredditMetadata,
-                       val threadMetadataList: List<ThreadMetadata>) {
-    companion object {
+                       val threadMetadataList: List<ThreadMetadata>)
 
-        fun fromResponse(response: SubredditResponse): SubredditDetails { // TODO make ext fun on response
-            val metadata = SubredditMetadata.fromResponse(response)
+fun SubredditResponse.toSubredditDetails(): SubredditDetails {
+    val metadata = this.toSubredditMetadata()
 
-            val threads = ArrayList<ThreadMetadata>(25)
-            for (child in response.data.children) {
-                threads.add(ThreadMetadata.fromResponse(child))
-            }
+    val threads = this.data.children.map { it.toThreadMetadata() }
 
-            return SubredditDetails(metadata, threads)
-        }
-    }
+    return SubredditDetails(metadata, threads)
 }
