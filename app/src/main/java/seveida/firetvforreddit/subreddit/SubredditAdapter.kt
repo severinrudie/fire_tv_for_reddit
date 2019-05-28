@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.thread_item.view.threadImageView
 import kotlinx.android.synthetic.main.thread_item.view.threadTitle
 import kotlinx.android.synthetic.main.thread_item.view.threadVoteCount
 import seveida.firetvforreddit.R
@@ -35,6 +37,7 @@ class SubredditAdapter : RecyclerView.Adapter<SubredditViewHolder>() {
         with (holder.itemView) {
             threadTitle.text = thread.title
             threadVoteCount.text = thread.voteCount.toString()
+            Picasso.get().load(thread.previewImageUrl).into(threadImageView)
         }
     }
 }
