@@ -7,7 +7,7 @@ import com.squareup.moshi.JsonClass
 data class Data_(
 
     @Json(name = "approved_at_utc")
-    var approvedAtUtc: Any,
+    var approvedAtUtc: Any?,
     @Json(name = "subreddit")
     var subreddit: String,
     @Json(name = "selftext")
@@ -17,7 +17,7 @@ data class Data_(
     @Json(name = "saved")
     var saved: Boolean = false,
     @Json(name = "mod_reason_title")
-    var modReasonTitle: Any,
+    var modReasonTitle: Any?,
     @Json(name = "gilded")
     var gilded: Int = 0,
     @Json(name = "clicked")
@@ -31,9 +31,9 @@ data class Data_(
     @Json(name = "hidden")
     var hidden: Boolean = false,
     @Json(name = "pwls")
-    var pwls: Any,
+    var pwls: Any?,
     @Json(name = "link_flair_css_class")
-    var linkFlairCssClass: Any,
+    var linkFlairCssClass: Any?,
     @Json(name = "downs")
     var downs: Int = 0,
     @Json(name = "thumbnail_height")
@@ -47,7 +47,7 @@ data class Data_(
     @Json(name = "link_flair_text_color")
     var linkFlairTextColor: String,
     @Json(name = "author_flair_background_color")
-    var authorFlairBackgroundColor: Any,
+    var authorFlairBackgroundColor: Any?,
     @Json(name = "subreddit_type")
     var subredditType: String,
     @Json(name = "ups")
@@ -59,35 +59,35 @@ data class Data_(
     @Json(name = "thumbnail_width")
     var thumbnailWidth: Int = 0,
     @Json(name = "author_flair_template_id")
-    var authorFlairTemplateId: Any,
+    var authorFlairTemplateId: Any?,
     @Json(name = "is_original_content")
     var isOriginalContent: Boolean = false,
     @Json(name = "user_reports")
     var userReports: List<Any>? = null,
     @Json(name = "secure_media")
-    var secureMedia: Any,
+    var secureMedia: Any?,
     @Json(name = "is_reddit_media_domain")
     var isRedditMediaDomain: Boolean = false,
     @Json(name = "is_meta")
     var isMeta: Boolean = false,
     @Json(name = "category")
-    var category: Any,
+    var category: Any?,
     @Json(name = "secure_media_embed")
     var secureMediaEmbed: SecureMediaEmbed,
     @Json(name = "link_flair_text")
-    var linkFlairText: Any,
+    var linkFlairText: Any?,
     @Json(name = "can_mod_post")
     var canModPost: Boolean = false,
     @Json(name = "score")
     var score: Int = 0,
     @Json(name = "approved_by")
-    var approvedBy: Any,
+    var approvedBy: Any?,
     @Json(name = "thumbnail")
     var thumbnail: String,
     @Json(name = "edited")
     var edited: Boolean = false,
     @Json(name = "author_flair_css_class")
-    var authorFlairCssClass: Any,
+    var authorFlairCssClass: Any?,
     @Json(name = "author_flair_richtext")
     var authorFlairRichtext: List<Any>? = null,
     @Json(name = "gildings")
@@ -95,33 +95,33 @@ data class Data_(
     @Json(name = "post_hint")
     var postHint: String,
     @Json(name = "content_categories")
-    var contentCategories: Any,
+    var contentCategories: Any?,
     @Json(name = "is_self")
     var isSelf: Boolean = false,
     @Json(name = "mod_note")
-    var modNote: Any,
+    var modNote: Any?,
     @Json(name = "created")
     var created: Int = 0,
     @Json(name = "link_flair_type")
     var linkFlairType: String,
     @Json(name = "wls")
-    var wls: Any,
+    var wls: Any?,
     @Json(name = "banned_by")
-    var bannedBy: Any,
+    var bannedBy: Any?,
     @Json(name = "author_flair_type")
     var authorFlairType: String,
     @Json(name = "contest_mode")
     var contestMode: Boolean = false,
     @Json(name = "selftext_html")
-    var selftextHtml: Any,
+    var selftextHtml: Any?,
     @Json(name = "likes")
-    var likes: Any,
+    var likes: Any?,
     @Json(name = "suggested_sort")
-    var suggestedSort: Any,
+    var suggestedSort: Any?,
     @Json(name = "banned_at_utc")
-    var bannedAtUtc: Any,
+    var bannedAtUtc: Any?,
     @Json(name = "view_count")
-    var viewCount: Any,
+    var viewCount: Any?,
     @Json(name = "archived")
     var archived: Boolean = false,
     @Json(name = "no_follow")
@@ -137,7 +137,7 @@ data class Data_(
     @Json(name = "media_only")
     var mediaOnly: Boolean = false,
     @Json(name = "link_flair_template_id")
-    var linkFlairTemplateId: Any,
+    var linkFlairTemplateId: Any?,
     @Json(name = "can_gild")
     var canGild: Boolean = false,
     @Json(name = "spoiler")
@@ -145,19 +145,19 @@ data class Data_(
     @Json(name = "locked")
     var locked: Boolean = false,
     @Json(name = "author_flair_text")
-    var authorFlairText: Any,
+    var authorFlairText: Any?,
     @Json(name = "visited")
     var visited: Boolean = false,
     @Json(name = "num_reports")
-    var numReports: Any,
+    var numReports: Any?,
     @Json(name = "distinguished")
-    var distinguished: Any,
+    var distinguished: Any?,
     @Json(name = "subreddit_id")
     var subredditId: String,
     @Json(name = "mod_reason_by")
-    var modReasonBy: Any,
+    var modReasonBy: Any?,
     @Json(name = "removal_reason")
-    var removalReason: Any,
+    var removalReason: Any?,
     @Json(name = "link_flair_background_color")
     var linkFlairBackgroundColor: String,
     @Json(name = "id")
@@ -165,7 +165,7 @@ data class Data_(
     @Json(name = "is_robot_indexable")
     var isRobotIndexable: Boolean = false,
     @Json(name = "report_reasons")
-    var reportReasons: Any,
+    var reportReasons: Any?,
     @Json(name = "author")
     var author: String,
     @Json(name = "num_crossposts")
@@ -175,17 +175,17 @@ data class Data_(
     @Json(name = "send_replies")
     var sendReplies: Boolean = false,
     @Json(name = "whitelist_status")
-    var whitelistStatus: Any,
+    var whitelistStatus: Any?,
     @Json(name = "mod_reports")
     var modReports: List<Any>? = null,
     @Json(name = "author_patreon_flair")
     var authorPatreonFlair: Boolean = false,
     @Json(name = "author_flair_text_color")
-    var authorFlairTextColor: Any,
+    var authorFlairTextColor: Any?,
     @Json(name = "permalink")
     var permalink: String,
     @Json(name = "parent_whitelist_status")
-    var parentWhitelistStatus: Any,
+    var parentWhitelistStatus: Any?,
     @Json(name = "stickied")
     var stickied: Boolean = false,
     @Json(name = "url")
@@ -195,7 +195,7 @@ data class Data_(
     @Json(name = "created_utc")
     var createdUtc: Int = 0,
     @Json(name = "media")
-    var media: Any,
+    var media: Any?,
     @Json(name = "is_video")
     var isVideo: Boolean = false
 )
