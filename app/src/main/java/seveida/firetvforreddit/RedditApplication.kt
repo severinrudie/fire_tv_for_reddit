@@ -2,6 +2,7 @@ package seveida.firetvforreddit
 
 import android.app.Application
 import com.jakewharton.threetenabp.AndroidThreeTen
+import seveida.firetvforreddit.subreddit.SubredditRepo
 
 class RedditApplication : Application() {
 

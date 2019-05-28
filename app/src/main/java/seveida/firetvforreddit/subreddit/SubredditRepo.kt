@@ -1,4 +1,4 @@
-package seveida.firetvforreddit
+package seveida.firetvforreddit.subreddit
 
 import io.reactivex.Observable
 import retrofit2.Retrofit
