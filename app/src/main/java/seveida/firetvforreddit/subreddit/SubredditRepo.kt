@@ -1,6 +1,7 @@
 package seveida.firetvforreddit.subreddit
 
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -15,6 +16,7 @@ class SubredditRepo internal constructor(retrofit: Retrofit) {
     fun getSubreddit(subreddit: String): Observable<SubredditDetails> {
         return api.getSubreddit(subreddit)
             .map { it.toSubredditDetails() }
+            .observeOn(AndroidSchedulers.mainThread())
     }
 }
 
