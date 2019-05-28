@@ -1,6 +1,7 @@
 package seveida.firetvforreddit.subreddit
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +23,7 @@ class SubredditFragment : Fragment() {
                               savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_subreddit, container, false)
 
+    @SuppressLint("SetTextI18n") // TODO set text the right way
     override fun onStart() {
         super.onStart()
 
@@ -32,7 +34,7 @@ class SubredditFragment : Fragment() {
         val subredditDetailsObs = subredditRepo.getSubreddit("aww")
         compositeDisposable += subredditDetailsObs.subscribe { subredditDetails ->
             adapter.setItems(subredditDetails.threadMetadataList)
-            subredditNameTV.text = subredditDetails.subredditMetadata.displayName
+            subredditNameTV.text = "r/${subredditDetails.subredditMetadata.displayName}"
         }
 
         with(subredditThreadRV) {
