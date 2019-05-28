@@ -10,5 +10,5 @@ data class Data(
     @Json(name = "dist") val dist: Int = 0,
     @Json(name = "children") val children: List<Child>,
     @Json(name = "after") val after: String,
-    @Json(name = "before") val before: Any
+    @Json(name = "before") val before: Any?
 )
