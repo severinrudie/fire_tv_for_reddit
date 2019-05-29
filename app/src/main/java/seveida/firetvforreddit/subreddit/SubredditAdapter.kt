@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.thread_item.view.threadImageView
 import kotlinx.android.synthetic.main.thread_item.view.threadTitle
 import kotlinx.android.synthetic.main.thread_item.view.threadVoteCount
 import seveida.firetvforreddit.R
-import seveida.firetvforreddit.domain.objects.ThreadMetadata
+import baron.severin.domain_objects.ThreadMetadata
 
 class SubredditAdapter : RecyclerView.Adapter<SubredditViewHolder>() {
 

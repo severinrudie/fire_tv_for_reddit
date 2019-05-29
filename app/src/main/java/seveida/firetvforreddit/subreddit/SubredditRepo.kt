@@ -6,9 +6,9 @@ import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Path
-import seveida.firetvforreddit.domain.objects.SubredditDetails
-import seveida.firetvforreddit.domain.objects.toSubredditDetails
-import seveida.firetvforreddit.response.objects.SubredditResponse
+import baron.severin.domain_objects.SubredditDetails
+import baron.severin.response_objects.conversions.toSubredditDetails
+import baron.severin.response_objects.raw.response.SubredditResponse
 
 class SubredditRepo internal constructor(retrofit: Retrofit) {
 
