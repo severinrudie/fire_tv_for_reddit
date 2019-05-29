@@ -1,4 +1,3 @@
-// TODO update to use Dependencies references
 plugins {
     id("com.android.application")
     id("kotlin-android-extensions")
@@ -7,18 +6,18 @@ plugins {
 }
 
 android {
-    compileSdkVersion(28)
+    compileSdkVersion(BuildConstants.compileSdkVersion)
     defaultConfig {
-        applicationId = "seveida.firetvforreddit"
-        minSdkVersion(21)
-        targetSdkVersion(28)
-        versionCode = 1
-        versionName = "1.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        applicationId = BuildConstants.applicationId
+        minSdkVersion(BuildConstants.minSdkVersion)
+        targetSdkVersion(BuildConstants.targetSdkVersion)
+        versionCode = BuildConstants.versionCode
+        versionName = BuildConstants.versionName
+        testInstrumentationRunner = BuildConstants.testInstrumentationRunner
     }
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = BuildConstants.minifyEnabled
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
@@ -31,40 +30,40 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Dependencies.kotlin_version}")
+    implementation(Dependencies.kotlin_stdlib)
 
-    implementation("androidx.appcompat:appcompat:1.0.2")
-    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
-    implementation("androidx.recyclerview:recyclerview:1.0.0")
-    implementation("androidx.core:core-ktx:1.0.2")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation(Dependencies.appCompat)
+    implementation(Dependencies.constraintLayout)
+    implementation(Dependencies.recyclerView)
+    implementation(Dependencies.ktx)
+    implementation(Dependencies.androidXLegacy)
 
     // RxJava
-    implementation("io.reactivex.rxjava2:rxjava:2.2.8")
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-    implementation("io.reactivex.rxjava2:rxkotlin:2.3.0")
+    implementation(Dependencies.rxJava)
+    implementation(Dependencies.rxAndroid)
+    implementation(Dependencies.rxKotlin)
 
     // Networking dependencies
-    implementation("com.squareup.okhttp3:okhttp:3.13.1")
-    implementation("com.squareup.retrofit2:retrofit:2.5.0")
-    implementation("com.squareup.retrofit2:adapter-rxjava2:2.2.0")
-    implementation("com.squareup.moshi:moshi:1.8.0")
-    implementation("com.squareup.retrofit2:converter-moshi:2.5.0")
-    kapt ("com.squareup.moshi:moshi-kotlin-codegen:1.6.0")
+    implementation(Dependencies.okhttp)
+    implementation(Dependencies.retrofit)
+    implementation(Dependencies.retrofitRxAdapter)
+    implementation(Dependencies.moshi)
+    implementation(Dependencies.retrofitMoshiAdapter)
+    kapt (Dependencies.moshiKapt)
 
     // Java Time backport
-    implementation("com.jakewharton.threetenabp:threetenabp:1.1.2")
+    implementation(Dependencies.threeTenAndroid)
     // Allows the time backport to work during testing
-    testImplementation("org.threeten:threetenbp:1.3.8")
+    testImplementation(Dependencies.threeTenJava)
 
     // Picasso
-    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation(Dependencies.picasso)
 
     // Test Dependencies
-    testImplementation("org.robolectric:robolectric:4.2")
-    testImplementation("junit:junit:4.12")
-    androidTestImplementation("androidx.test:runner:1.1.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.1.1")
+    testImplementation(Dependencies.robolectric)
+    testImplementation(Dependencies.junit)
+    androidTestImplementation(Dependencies.testRunner)
+    androidTestImplementation(Dependencies.espressoCore)
 }
 
 repositories {

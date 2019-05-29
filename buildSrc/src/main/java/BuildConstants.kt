@@ -1,5 +1,4 @@
-object Constants {
-    object Build {
+object BuildConstants {
         val compileSdkVersion = 28
         val applicationId = "seveida.firetvforreddit"
         val minSdkVersion = 21
@@ -8,5 +7,4 @@ object Constants {
         val versionName = "1.0"
         val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         val minifyEnabled = false
-    }
 }
