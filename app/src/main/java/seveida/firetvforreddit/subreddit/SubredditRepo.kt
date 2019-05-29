@@ -7,14 +7,14 @@ import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Path
 import baron.severin.domain_objects.SubredditDetails
-import baron.severin.domain_objects.toSubredditDetails
-import baron.severin.response_objects.SubredditResponse
+import baron.severin.response_objects.conversions.toSubredditDetails
+import baron.severin.response_objects.raw.response.SubredditResponse
 
 class SubredditRepo internal constructor(retrofit: Retrofit) {
 
     private val api: SubredditApi = retrofit.create(SubredditApi::class.java)
 
-    fun getSubreddit(subreddit: String): Observable<baron.severin.domain_objects.SubredditDetails> {
+    fun getSubreddit(subreddit: String): Observable<SubredditDetails> {
         return api.getSubreddit(subreddit)
             .subscribeOn(Schedulers.io())
             .map { it.toSubredditDetails() }
@@ -24,6 +24,6 @@ class SubredditRepo internal constructor(retrofit: Retrofit) {
 
 internal interface SubredditApi {
     @GET("/r/{sub}.json")
-    fun getSubreddit(@Path("sub") subreddit: String): Observable<baron.severin.response_objects.SubredditResponse>
+    fun getSubreddit(@Path("sub") subreddit: String): Observable<SubredditResponse>
 }
 

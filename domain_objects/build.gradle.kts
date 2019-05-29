@@ -33,6 +33,11 @@ dependencies {
 
     implementation(Dependencies.appCompat)
 
+    // Java Time backport
+    implementation(Dependencies.threeTenAndroid)
+    // Allows the time backport to work during testing
+    testImplementation(Dependencies.threeTenJava)
+
     testImplementation(Dependencies.robolectric)
     testImplementation(Dependencies.junit)
     androidTestImplementation(Dependencies.testRunner)

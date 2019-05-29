@@ -28,7 +28,7 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(project(":domain_objects"))
+    implementation(project(Dependencies.domain_objects))
 
     implementation(Dependencies.kotlin_stdlib)
 
@@ -36,6 +36,11 @@ dependencies {
 
     implementation(Dependencies.moshi)
     kapt (Dependencies.moshiKapt)
+
+    // Java Time backport
+    implementation(Dependencies.threeTenAndroid)
+    // Allows the time backport to work during testing
+    testImplementation(Dependencies.threeTenJava)
 
     testImplementation(Dependencies.robolectric)
     testImplementation(Dependencies.junit)

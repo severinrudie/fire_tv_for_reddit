@@ -1,10 +1,11 @@
 object Dependencies {
-    const val kotlin_version = "1.3.21"
-    const val gradle_plugin = "com.android.tools.build:gradle:3.4.0"
-    const val kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    // Modules
+    const val app = ":app"
+    const val domain_objects = ":domain_objects"
+    const val response_objects = ":response_objects"
 
     // Language
-    const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${BuildConstants.kotlin_version}"
 
     // Android
     const val appCompat = "androidx.appcompat:appcompat:1.0.2"

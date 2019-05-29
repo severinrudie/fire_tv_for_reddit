@@ -17,9 +17,9 @@ import baron.severin.domain_objects.ThreadMetadata
 
 class SubredditAdapter : RecyclerView.Adapter<SubredditViewHolder>() {
 
-    private var items = emptyList<baron.severin.domain_objects.ThreadMetadata>()
+    private var items = emptyList<ThreadMetadata>()
 
-    fun setItems(items: List<baron.severin.domain_objects.ThreadMetadata>) {
+    fun setItems(items: List<ThreadMetadata>) {
         this.items = items
         notifyDataSetChanged()
     }

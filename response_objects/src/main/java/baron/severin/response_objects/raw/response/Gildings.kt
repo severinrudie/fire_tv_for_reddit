@@ -1,4 +1,4 @@
-package baron.severin.response_objects
+package baron.severin.response_objects.raw.response
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
