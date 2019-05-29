@@ -1,1 +1,1 @@
-C:\Users\Severin\Desktop\Code\fire_tv_for_reddit\buildSrc\build\classes\kotlin\main\Dependencies.class
+C:\Users\Severin\Desktop\Code\fire_tv_for_reddit\buildSrc\build\classes\kotlin\main\Constants$Build.class;C:\Users\Severin\Desktop\Code\fire_tv_for_reddit\buildSrc\build\classes\kotlin\main\Constants.class;C:\Users\Severin\Desktop\Code\fire_tv_for_reddit\buildSrc\build\classes\kotlin\main\Dependencies.class
