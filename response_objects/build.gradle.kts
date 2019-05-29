@@ -34,6 +34,9 @@ dependencies {
 
     implementation(Dependencies.appCompat)
 
+    implementation(Dependencies.moshi)
+    kapt (Dependencies.moshiKapt)
+
     testImplementation(Dependencies.robolectric)
     testImplementation(Dependencies.junit)
     androidTestImplementation(Dependencies.testRunner)
