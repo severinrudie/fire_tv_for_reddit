@@ -1,4 +1,4 @@
-package seveida.firetvforreddit.domain.objects
+package baron.severin.domain_objects
 
 import android.net.Uri
 
@@ -10,9 +10,9 @@ import seveida.firetvforreddit.response.objects.Child
 import seveida.firetvforreddit.response.objects.Data_
 
 data class ThreadMetadata(val threadId: String, val previewImageUrl: Uri,
-                     val title: String, val op: UserMetadata,
-                     val voteCount: VoteCount, val created: LocalDateTime,
-                     val commentCount: Int)
+                          val title: String, val op: UserMetadata,
+                          val voteCount: VoteCount, val created: LocalDateTime,
+                          val commentCount: Int)
 
 fun Child.toThreadMetadata(): ThreadMetadata {
     val data = this.data
@@ -23,11 +23,11 @@ fun Child.toThreadMetadata(): ThreadMetadata {
 
     val opName = data.author
     val opId = data.authorFullname
-    val op = UserMetadata(opId, opName)
+    val op = baron.severin.domain_objects.UserMetadata(opId, opName)
 
-    val voteCount = VoteCount(data.ups, data.downs)
+    val voteCount = baron.severin.domain_objects.VoteCount(data.ups, data.downs)
 
     val created = Instant.ofEpochMilli(data.created.toLong()).atZone(ZoneId.systemDefault()).toLocalDateTime()
     val commentCount = data.numComments
-    return ThreadMetadata(id, imageUri, title, op, voteCount, created, commentCount)
+    return baron.severin.domain_objects.ThreadMetadata(id, imageUri, title, op, voteCount, created, commentCount)
 }

@@ -1,10 +1,10 @@
-package seveida.firetvforreddit.response.objects
+package baron.severin.response_objects
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Child(
+data class SubredditResponse (
     @Json(name = "kind") val kind: String,
-    @Json(name = "data") val data: Data_
+    @Json(name = "data") val data: Data
 )

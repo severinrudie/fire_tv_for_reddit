@@ -1,4 +1,4 @@
-package seveida.firetvforreddit.response.objects
+package baron.severin.response_objects
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

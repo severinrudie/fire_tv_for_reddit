@@ -1,4 +1,4 @@
-package seveida.firetvforreddit.domain.objects
+package baron.severin.domain_objects
 
 import android.net.Uri
 import seveida.firetvforreddit.response.objects.SubredditResponse
@@ -13,5 +13,5 @@ fun SubredditResponse.toSubredditMetadata(): SubredditMetadata {
     val urlPath = Uri.parse("www.example.com") // TODO
     val image = Uri.parse("www.example.com") // TODO
 
-    return SubredditMetadata(urlPath, image, subredditId, subredditName)
+    return baron.severin.domain_objects.SubredditMetadata(urlPath, image, subredditId, subredditName)
 }
