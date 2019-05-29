@@ -1,1 +1,1 @@
-include(":app")
+include ':response_objects', ':domain_objects', ':app'
