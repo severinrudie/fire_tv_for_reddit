@@ -3,6 +3,7 @@ object Dependencies {
     const val app = ":app"
     const val domain_objects = ":domain_objects"
     const val response_objects = ":response_objects"
+    const val io = ":io"
 
     // Language
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${BuildConstants.kotlin_version}"

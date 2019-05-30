@@ -1,11 +1,11 @@
-package seveida.firetvforreddit
+package baron.severin.io
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-internal object RetrofitProvider {
+object RetrofitProvider {
 
     fun create(): Retrofit {
         val client = OkHttpClient()
