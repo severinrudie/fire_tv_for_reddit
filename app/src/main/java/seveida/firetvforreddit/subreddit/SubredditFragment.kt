@@ -23,25 +23,25 @@ class SubredditFragment : Fragment() {
                               savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_subreddit, container, false)
 
-    @SuppressLint("SetTextI18n") // TODO set text the right way
-    override fun onStart() {
-        super.onStart()
-
-        val adapter = SubredditAdapter()
-
-        // TODO decide on DI strategy and replace this
-        val subredditRepo = (this.activity!!.application as RedditApplication).subredditRepo
-        val subredditDetailsObs = subredditRepo.getSubreddit("aww")
-        compositeDisposable += subredditDetailsObs.subscribe { subredditDetails ->
-            adapter.setItems(subredditDetails.threadMetadataList)
-            subredditNameTV.text = "r/${subredditDetails.subredditMetadata.displayName}"
-        }
-
-        with(subredditThreadRV) {
-            this.adapter = adapter
-            layoutManager = LinearLayoutManager(context)
-        }
-    }
+//    @SuppressLint("SetTextI18n") // TODO set text the right way
+//    override fun onStart() {
+//        super.onStart()
+//
+//        val adapter = SubredditAdapter()
+//
+//        // TODO decide on DI strategy and replace this
+//        val subredditRepo = (this.activity!!.application as RedditApplication).subredditRepo
+//        val subredditDetailsObs = subredditRepo.getSubreddit("aww")
+//        compositeDisposable += subredditDetailsObs.subscribe { subredditDetails ->
+//            adapter.setItems(subredditDetails.threadMetadataList)
+//            subredditNameTV.text = "r/${subredditDetails.subredditMetadata.displayName}"
+//        }
+//
+//        with(subredditThreadRV) {
+//            this.adapter = adapter
+//            layoutManager = LinearLayoutManager(context)
+//        }
+//    }
 
     override fun onStop() {
         super.onStop()
