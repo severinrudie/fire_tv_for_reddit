@@ -20,6 +20,14 @@ object Dependencies {
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
     const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:2.3.0"
 
+    // Dependency injection
+    private const val dagger_version = "2.23"
+    const val dagger = "com.google.dagger:dagger:$dagger_version"
+    const val dagger_apt = "com.google.dagger:dagger-compiler:$dagger_version"
+    const val dagger_android = "com.google.dagger:dagger-android:$dagger_version"
+    const val dagger_android_support = "com.google.dagger:dagger-android-support:$dagger_version"
+    const val dagger_android_apt = "com.google.dagger:dagger-android-processor:$dagger_version"
+
     // Networking dependencies
     const val okhttp = "com.squareup.okhttp3:okhttp:3.13.1"
     const val retrofit = "com.squareup.retrofit2:retrofit:2.5.0"

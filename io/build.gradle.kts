@@ -39,6 +39,12 @@ dependencies {
     implementation(Dependencies.rxAndroid)
     implementation(Dependencies.rxKotlin)
 
+    implementation(Dependencies.dagger)
+    implementation(Dependencies.dagger_apt)
+    implementation(Dependencies.dagger_android)
+    implementation(Dependencies.dagger_android_support)
+    implementation(Dependencies.dagger_android_apt)
+
     implementation(Dependencies.okhttp)
     implementation(Dependencies.retrofit)
     implementation(Dependencies.retrofitRxAdapter)
