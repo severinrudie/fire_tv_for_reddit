@@ -1,16 +1,19 @@
 package seveida.firetvforreddit
 
+import android.app.Activity
 import android.app.Application
+import baron.severin.io.dagger.DaggerIoComponent
 import baron.severin.io.dagger.IoModule
 import com.jakewharton.threetenabp.AndroidThreeTen
-import baron.severin.io.SubredditRepo
-import baron.severin.io.dagger.DaggerIoComponent
-import seveida.firetvforreddit.dagger.DaggerAppComponent
+import dagger.android.AndroidInjector
+import dagger.android.HasActivityInjector
 import javax.inject.Inject
+import dagger.android.DispatchingAndroidInjector
+import seveida.firetvforreddit.dagger.DaggerAppComponent
 
-class RedditApplication : Application() {
+class RedditApplication : Application(), HasActivityInjector {
 
-    @Inject lateinit var subredditRepo: SubredditRepo
+    @Inject lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>
 
     override fun onCreate() {
         super.onCreate()
@@ -33,4 +36,6 @@ class RedditApplication : Application() {
                 .build()
         appComponent.inject(this)
     }
+
+    override fun activityInjector(): AndroidInjector<Activity> = dispatchingActivityInjector
 }
