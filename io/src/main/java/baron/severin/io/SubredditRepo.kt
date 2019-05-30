@@ -1,4 +1,4 @@
-package seveida.firetvforreddit.subreddit
+package baron.severin.io
 
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -10,7 +10,7 @@ import baron.severin.domain_objects.SubredditDetails
 import baron.severin.response_objects.conversions.toSubredditDetails
 import baron.severin.response_objects.raw.response.SubredditResponse
 
-class SubredditRepo internal constructor(retrofit: Retrofit) {
+class SubredditRepo(retrofit: Retrofit) {
 
     private val api: SubredditApi = retrofit.create(SubredditApi::class.java)
 
@@ -26,4 +26,3 @@ internal interface SubredditApi {
     @GET("/r/{sub}.json")
     fun getSubreddit(@Path("sub") subreddit: String): Observable<SubredditResponse>
 }
-

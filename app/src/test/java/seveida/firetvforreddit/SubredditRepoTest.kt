@@ -1,9 +1,10 @@
 package seveida.firetvforreddit
 
+import baron.severin.io.RetrofitProvider
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
-import seveida.firetvforreddit.subreddit.SubredditRepo
+import baron.severin.io.SubredditRepo
 
 @RunWith(RobolectricTestRunner::class)
 class SubredditRepoTest {
@@ -14,7 +15,7 @@ class SubredditRepoTest {
 
         val repo = SubredditRepo(retrofit)
 
-        repo.getSubreddit("boobs")
+        repo.getSubreddit("aww")
             .subscribe { (_, threadMetadataList) -> threadMetadataList.forEach { (_, _, title) -> println(title) } }
 
         try {

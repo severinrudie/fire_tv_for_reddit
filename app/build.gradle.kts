@@ -30,6 +30,7 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(project(Dependencies.domain_objects))
+    implementation(project(Dependencies.io))
     implementation(project(Dependencies.response_objects)) // TODO temporary. App will eventually get domain objects fully formed out of a facade
 
     implementation(Dependencies.kotlin_stdlib)

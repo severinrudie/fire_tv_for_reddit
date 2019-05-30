@@ -1,8 +1,9 @@
 package seveida.firetvforreddit
 
 import android.app.Application
+import baron.severin.io.RetrofitProvider
 import com.jakewharton.threetenabp.AndroidThreeTen
-import seveida.firetvforreddit.subreddit.SubredditRepo
+import baron.severin.io.SubredditRepo
 
 class RedditApplication : Application() {
 
