@@ -25,7 +25,7 @@ object Dependencies {
     const val dagger = "com.google.dagger:dagger:$dagger_version"
     const val dagger_apt = "com.google.dagger:dagger-compiler:$dagger_version"
     const val dagger_android = "com.google.dagger:dagger-android:$dagger_version"
-    const val dagger_android_support = "com.google.dagger:dagger-android-support:$dagger_version"
+//    const val dagger_android_support = "com.google.dagger:dagger-android-support:$dagger_version"
     const val dagger_android_apt = "com.google.dagger:dagger-android-processor:$dagger_version"
 
     // Networking dependencies

@@ -4,9 +4,11 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import baron.severin.domain_objects.SubredditDetails
+import baron.severin.io.dagger.IoScope
 import baron.severin.response_objects.conversions.toSubredditDetails
 import javax.inject.Inject
 
+@IoScope
 class SubredditRepo @Inject internal constructor(private val subredditApi: SubredditApi) {
 
     fun getSubreddit(subreddit: String): Observable<SubredditDetails> {
