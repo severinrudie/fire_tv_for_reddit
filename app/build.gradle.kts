@@ -50,9 +50,8 @@ dependencies {
     implementation(Dependencies.dagger)
     kapt(Dependencies.dagger_apt)
     implementation(Dependencies.dagger_android)
-//    implementation(Dependencies.dagger_android_support)
+    implementation(Dependencies.dagger_android_support)
     kapt(Dependencies.dagger_android_apt)
-
 
     // Networking dependencies
     implementation(Dependencies.okhttp)
@@ -79,4 +78,5 @@ dependencies {
 
 repositories {
     mavenCentral()
+    google()
 }
