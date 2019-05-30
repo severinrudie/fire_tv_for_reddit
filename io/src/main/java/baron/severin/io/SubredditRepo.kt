@@ -3,26 +3,18 @@ package baron.severin.io
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import retrofit2.Retrofit
-import retrofit2.http.GET
-import retrofit2.http.Path
 import baron.severin.domain_objects.SubredditDetails
+import baron.severin.io.dagger.IoScope
 import baron.severin.response_objects.conversions.toSubredditDetails
-import baron.severin.response_objects.raw.response.SubredditResponse
+import javax.inject.Inject
 
-class SubredditRepo(retrofit: Retrofit) {
-
-    private val api: SubredditApi = retrofit.create(SubredditApi::class.java)
+@IoScope
+class SubredditRepo @Inject internal constructor(private val subredditApi: SubredditApi) {
 
     fun getSubreddit(subreddit: String): Observable<SubredditDetails> {
-        return api.getSubreddit(subreddit)
+        return subredditApi.getSubreddit(subreddit)
             .subscribeOn(Schedulers.io())
             .map { it.toSubredditDetails() }
             .observeOn(AndroidSchedulers.mainThread())
     }
-}
-
-internal interface SubredditApi {
-    @GET("/r/{sub}.json")
-    fun getSubreddit(@Path("sub") subreddit: String): Observable<SubredditResponse>
 }
