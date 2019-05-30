@@ -35,6 +35,11 @@ dependencies {
 
     implementation(Dependencies.appCompat)
 
+    // RxJava
+    implementation(Dependencies.rxJava)
+    implementation(Dependencies.rxAndroid)
+    implementation(Dependencies.rxKotlin)
+
     // Java Time backport
     implementation(Dependencies.threeTenAndroid)
     // Allows the time backport to work during testing
