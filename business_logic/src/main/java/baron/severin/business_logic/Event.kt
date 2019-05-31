@@ -9,5 +9,5 @@ class EventRelay(val get: Relay<Event>)
 
 // Sent by the UI
 sealed class Event {
-    data class SubredditSelected(val subredditName: String) : Event()
+    data class SubredditSelected(val subredditName: String) : Event() // TODO make this CharSequence
 }
