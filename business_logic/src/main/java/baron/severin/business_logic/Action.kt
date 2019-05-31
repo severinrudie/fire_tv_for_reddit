@@ -10,5 +10,5 @@ class ActionRelay(val get: Relay<Action>)
 
 sealed class Action {
     object LoadingSubreddit : Action()
-    class LoadSubreddit(val subreddit: SubredditDetails) : Action()
+    class SubredditLoaded(val subreddit: SubredditDetails) : Action()
 }

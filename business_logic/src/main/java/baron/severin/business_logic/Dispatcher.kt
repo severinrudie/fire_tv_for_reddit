@@ -30,7 +30,7 @@ class Dispatcher(
     private fun getSubreddit(name: String): Observable<Action> {
         val load: Action = Action.LoadingSubreddit
         val loadedObs: Observable<Action> = subredditRepo.getSubreddit(name)
-                .map { Action.LoadSubreddit(it) }
+                .map { Action.SubredditLoaded(it) }
 
         return Observable.just(load)
                 .concatWith(loadedObs)
