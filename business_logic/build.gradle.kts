@@ -43,6 +43,10 @@ dependencies {
     // Arrow
     implementation(Dependencies.arrow_core)
 
+    // Dependency injection
+    implementation(Dependencies.dagger)
+    kapt(Dependencies.dagger_apt)
+
     // Java Time backport
     implementation(Dependencies.threeTenAndroid)
     // Allows the time backport to work during testing
