@@ -2,6 +2,7 @@ package baron.severin.business_logic.dagger
 
 import baron.severin.business_logic.*
 import baron.severin.common.dagger.AppScope
+import baron.severin.io.SubredditRepo
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
 import dagger.Module
@@ -27,11 +28,13 @@ object BusinessLogicModule {
     @Provides @AppScope
     internal fun providesDispatcher(
             eventObservable: EventObservable,
-            actionRelay: ActionRelay
+            actionRelay: ActionRelay,
+            subredditRepo: SubredditRepo
     ): Dispatcher =
             Dispatcher(
                     eventObservable,
-                    actionRelay
+                    actionRelay,
+                    subredditRepo
             )
 
     @Provides @AppScope

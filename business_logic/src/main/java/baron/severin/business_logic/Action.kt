@@ -1,5 +1,6 @@
 package baron.severin.business_logic
 
+import baron.severin.domain_objects.SubredditDetails
 import com.jakewharton.rxrelay2.Relay
 import io.reactivex.Observable
 
@@ -7,5 +8,7 @@ import io.reactivex.Observable
 class ActionObservable(val get: Observable<Action>)
 class ActionRelay(val get: Relay<Action>)
 
-sealed class Action
-class TempAction : Action()
+sealed class Action {
+    object LoadingSubreddit : Action()
+    class LoadSubreddit(val subreddit: SubredditDetails) : Action()
+}

@@ -11,6 +11,7 @@ import javax.inject.Inject
 @AppScope
 class SubredditRepo @Inject internal constructor(private val subredditApi: SubredditApi) {
 
+    // TODO handle failure case
     fun getSubreddit(subreddit: String): Observable<SubredditDetails> {
         return subredditApi.getSubreddit(subreddit)
             .subscribeOn(Schedulers.io())

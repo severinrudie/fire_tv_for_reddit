@@ -46,7 +46,7 @@ class SubredditFragment : Fragment() {
             adapter.setItems(subredditDetails.threadMetadataList)
             subredditNameTV.text = "r/${subredditDetails.subredditMetadata.displayName}"
         }
-        println(stateObs)
+        println("Sevtest: $stateObs")
 
         with(subredditThreadRV) {
             this.adapter = adapter

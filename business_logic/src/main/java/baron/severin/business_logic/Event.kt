@@ -8,5 +8,6 @@ class EventObservable(val get: Observable<Event>)
 class EventSubject(val get: Subject<Event>)
 
 // Sent by the UI
-sealed class Event
-class TempEvent : Event()
+sealed class Event {
+    class SubredditSelected(val subredditName: String) : Event()
+}
