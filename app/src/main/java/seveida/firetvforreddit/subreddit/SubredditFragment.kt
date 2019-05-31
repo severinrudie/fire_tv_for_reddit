@@ -52,13 +52,11 @@ class SubredditFragment : Fragment() {
 
     private fun observeState() {
         compositeDisposable += stateObs
-                .map { it.selectedSubreddit }
-                .subscribe {
-                    it.fold(
-                            ifLeft = { loading -> setLoading() },
-                            ifRight = { subreddit ->
-                                subredditAdapter.setItems(subreddit.threadMetadataList)
-                            }
+                .map { it.threadList }
+                .subscribe { threadList ->
+                    threadList.fold(
+                            ifLeft = { setLoading() },
+                            ifRight = { subredditAdapter.setItems(it) }
                     )
                 }
     }

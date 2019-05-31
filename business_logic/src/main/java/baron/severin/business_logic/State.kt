@@ -1,7 +1,7 @@
 package baron.severin.business_logic
 
 import arrow.core.Either
-import baron.severin.domain_objects.SubredditDetails
+import baron.severin.domain_objects.ThreadMetadata
 import com.jakewharton.rxrelay2.Relay
 import io.reactivex.Observable
 
@@ -9,8 +9,13 @@ import io.reactivex.Observable
 class StateObservable(val get: Observable<State>)
 internal class StateRelay(val get: Relay<State>)
 
-object Loading
 data class State(
-        val selectedSubreddit: Either<Loading, SubredditDetails>,
-        val currentScreen: CurrentScreen
+        val currentScreen: CurrentScreen,
+        val toolbarState: ToolbarState,
+        val threadList: Either<Loading, List<ThreadMetadata>>
 )
+
+data class ToolbarState(
+        val title: String
+)
+object Loading
