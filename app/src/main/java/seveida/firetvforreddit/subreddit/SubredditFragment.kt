@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import baron.severin.business_logic.StateObservable
 import baron.severin.io.SubredditRepo
 import dagger.android.support.AndroidSupportInjection
 import io.reactivex.disposables.CompositeDisposable
@@ -21,6 +22,7 @@ import javax.inject.Inject
 class SubredditFragment : Fragment() {
 
     @Inject lateinit var subredditRepo: SubredditRepo
+    @Inject lateinit var stateObs: StateObservable
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -44,6 +46,7 @@ class SubredditFragment : Fragment() {
             adapter.setItems(subredditDetails.threadMetadataList)
             subredditNameTV.text = "r/${subredditDetails.subredditMetadata.displayName}"
         }
+        println(stateObs)
 
         with(subredditThreadRV) {
             this.adapter = adapter
