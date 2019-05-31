@@ -1,5 +1,7 @@
 package baron.severin.business_logic
 
-fun reducer(prevState: State, action: Action): State {
-    return prevState
+class Reducer {
+    operator fun invoke(prevState: State, action: Action): State {
+        return prevState
+    }
 }
