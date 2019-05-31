@@ -2,7 +2,7 @@ package seveida.firetvforreddit
 
 import android.app.Activity
 import android.app.Application
-import baron.severin.io.dagger.DaggerIoComponent
+import baron.severin.business_logic.dagger.BusinessLogicModule
 import baron.severin.io.dagger.IoModule
 import com.jakewharton.threetenabp.AndroidThreeTen
 import dagger.android.AndroidInjector
@@ -28,11 +28,9 @@ class RedditApplication : Application(), HasActivityInjector {
     }
 
     private fun injectDependencies() {
-        val ioComponent = DaggerIoComponent.builder()
-                .ioModule(IoModule)
-                .build()
         val appComponent = DaggerAppComponent.builder()
-                .ioComponent(ioComponent)
+                .ioModule(IoModule)
+                .businessLogicModule(BusinessLogicModule)
                 .build()
         appComponent.inject(this)
     }

@@ -1,6 +1,7 @@
 package baron.severin.business_logic.dagger
 
 import baron.severin.business_logic.*
+import baron.severin.common.dagger.AppScope
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
 import dagger.Module
@@ -9,21 +10,21 @@ import dagger.Provides
 @Module
 object BusinessLogicModule {
 
-    @Provides @BusinessLogicScope
+    @Provides @AppScope
     fun providesActionRelay(): ActionRelay = ActionRelay(PublishRelay.create())
 
-    @Provides @BusinessLogicScope
+    @Provides @AppScope
     internal fun providesActionObservable(relay: ActionRelay): ActionObservable =
             ActionObservable(relay.get.hide())
 
-    @Provides @BusinessLogicScope
+    @Provides @AppScope
     internal fun providesStateRelay(): StateRelay = StateRelay(BehaviorRelay.create())
 
-    @Provides @BusinessLogicScope
+    @Provides @AppScope
     fun providesStateObservable(relay: StateRelay): StateObservable =
             StateObservable(relay.get.hide())
 
-    @Provides @BusinessLogicScope
+    @Provides @AppScope
     internal fun providesDispatcher(
             eventObservable: EventObservable,
             actionRelay: ActionRelay
@@ -33,10 +34,10 @@ object BusinessLogicModule {
                     actionRelay
             )
 
-    @Provides @BusinessLogicScope
+    @Provides @AppScope
     internal fun providesReducer(): Reducer = Reducer()
 
-    @Provides @BusinessLogicScope
+    @Provides @AppScope
     internal fun providesStore(
             reducer: Reducer,
             actionObservable: ActionObservable,

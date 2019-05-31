@@ -33,6 +33,9 @@ dependencies {
 
     implementation(Dependencies.appCompat)
 
+    implementation(Dependencies.dagger)
+    kapt(Dependencies.dagger_apt)
+
     testImplementation(Dependencies.robolectric)
     testImplementation(Dependencies.junit)
     androidTestImplementation(Dependencies.testRunner)
