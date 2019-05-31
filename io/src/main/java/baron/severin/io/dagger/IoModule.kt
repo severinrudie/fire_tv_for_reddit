@@ -1,5 +1,6 @@
 package baron.severin.io.dagger
 
+import baron.severin.common.dagger.AppScope
 import baron.severin.io.SubredditApi
 import dagger.Module
 import dagger.Provides
@@ -11,10 +12,10 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 @Module
 object IoModule {
 
-    @Provides @IoScope
+    @Provides @AppScope
     internal fun providesOkHttp(): OkHttpClient = OkHttpClient()
 
-    @Provides @IoScope
+    @Provides @AppScope
     internal fun providesRetrofit(httpClient: OkHttpClient): Retrofit = Retrofit.Builder()
             .baseUrl("https://www.reddit.com")
             .client(httpClient)
@@ -22,7 +23,7 @@ object IoModule {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
 
-    @Provides @IoScope
+    @Provides @AppScope
     internal fun providesSubredditApi(retrofit: Retrofit): SubredditApi =
             retrofit.create(SubredditApi::class.java)
 }

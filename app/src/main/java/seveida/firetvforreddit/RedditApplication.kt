@@ -2,7 +2,8 @@ package seveida.firetvforreddit
 
 import android.app.Activity
 import android.app.Application
-import baron.severin.io.dagger.DaggerIoComponent
+import baron.severin.business_logic.DataFlowInitializer
+import baron.severin.business_logic.dagger.BusinessLogicModule
 import baron.severin.io.dagger.IoModule
 import com.jakewharton.threetenabp.AndroidThreeTen
 import dagger.android.AndroidInjector
@@ -14,12 +15,14 @@ import seveida.firetvforreddit.dagger.DaggerAppComponent
 class RedditApplication : Application(), HasActivityInjector {
 
     @Inject lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>
+    @Inject lateinit var dataFlowInitializer: DataFlowInitializer
 
     override fun onCreate() {
         super.onCreate()
         AndroidThreeTen.init(this)
 
         injectDependencies()
+        dataFlowInitializer.init()
     }
 
     override fun onLowMemory() {
@@ -28,11 +31,9 @@ class RedditApplication : Application(), HasActivityInjector {
     }
 
     private fun injectDependencies() {
-        val ioComponent = DaggerIoComponent.builder()
-                .ioModule(IoModule)
-                .build()
         val appComponent = DaggerAppComponent.builder()
-                .ioComponent(ioComponent)
+                .ioModule(IoModule)
+                .businessLogicModule(BusinessLogicModule)
                 .build()
         appComponent.inject(this)
     }

@@ -5,6 +5,7 @@ object Dependencies {
     const val response_objects = ":response_objects"
     const val io = ":io"
     const val business_logic = ":business_logic"
+    const val common = ":common"
 
     // Language
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${BuildConstants.kotlin_version}"
@@ -20,6 +21,11 @@ object Dependencies {
     const val rxJava = "io.reactivex.rxjava2:rxjava:2.2.8"
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
     const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:2.3.0"
+    const val rxRelay = "com.jakewharton.rxrelay2:rxrelay:2.1.0"
+
+    // Arrow
+    private const val arrow_version = "0.9.0"
+    const val arrow_core = "io.arrow-kt:arrow-core-data:$arrow_version"
 
     // Dependency injection
     private const val dagger_version = "2.23"

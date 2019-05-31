@@ -32,6 +32,7 @@ dependencies {
     implementation(project(Dependencies.domain_objects))
     implementation(project(Dependencies.io)) // TODO remove (will live in bus logic)
     implementation(project(Dependencies.business_logic))
+    implementation(project(Dependencies.common))
 
     implementation(Dependencies.kotlin_stdlib)
 
@@ -45,6 +46,10 @@ dependencies {
     implementation(Dependencies.rxJava)
     implementation(Dependencies.rxAndroid)
     implementation(Dependencies.rxKotlin)
+    implementation(Dependencies.rxRelay)
+
+    // Arrow
+    implementation(Dependencies.arrow_core)
 
     // Dependency injection
     implementation(Dependencies.dagger)
