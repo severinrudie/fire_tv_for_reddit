@@ -58,7 +58,6 @@ class SubredditFragment : Fragment() {
                             ifLeft = { loading -> setLoading() },
                             ifRight = { subreddit ->
                                 subredditAdapter.setItems(subreddit.threadMetadataList)
-                                subredditNameTV.text = subreddit.subredditMetadata.displayName
                             }
                     )
                 }
