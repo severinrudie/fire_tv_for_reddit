@@ -21,6 +21,10 @@ object Dependencies {
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
     const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:2.3.0"
 
+    // Arrow
+    private const val arrow_version = "0.9.0"
+    const val arrow_core = "io.arrow-kt:arrow-core-data:$arrow_version"
+
     // Dependency injection
     private const val dagger_version = "2.23"
     const val dagger = "com.google.dagger:dagger:$dagger_version"
