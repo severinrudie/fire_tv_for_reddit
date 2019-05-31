@@ -32,6 +32,7 @@ dependencies {
     implementation(project(Dependencies.domain_objects))
     implementation(project(Dependencies.io)) // TODO remove (will live in bus logic)
     implementation(project(Dependencies.business_logic))
+    implementation(project(Dependencies.common))
 
     implementation(Dependencies.kotlin_stdlib)
 

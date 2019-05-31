@@ -30,6 +30,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(project(Dependencies.domain_objects))
     implementation(project(Dependencies.response_objects))
+    implementation(project(Dependencies.common))
 
     implementation(Dependencies.kotlin_stdlib)
 
