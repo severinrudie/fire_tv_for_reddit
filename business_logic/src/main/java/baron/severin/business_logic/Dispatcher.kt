@@ -2,7 +2,7 @@ package baron.severin.business_logic
 
 import android.annotation.SuppressLint
 
-@SuppressLint("CheckResult") // TODO remove
+@SuppressLint("CheckResult") // This subscription should always be active
 class Dispatcher(eventObservable: EventObservable, actionSubject: ActionSubject) {
     // TODO use relays, not observables
     init {

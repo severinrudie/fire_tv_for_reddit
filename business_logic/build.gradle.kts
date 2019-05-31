@@ -40,6 +40,9 @@ dependencies {
     implementation(Dependencies.rxAndroid)
     implementation(Dependencies.rxKotlin)
 
+    // Arrow
+    implementation(Dependencies.arrow_core)
+
     // Java Time backport
     implementation(Dependencies.threeTenAndroid)
     // Allows the time backport to work during testing

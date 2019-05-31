@@ -2,7 +2,7 @@ package baron.severin.business_logic
 
 import android.annotation.SuppressLint
 
-@SuppressLint("CheckResult") // TODO remove
+@SuppressLint("CheckResult") // This subscription should always be active
 class Store(initialState: State, actionObservable: ActionObservable, stateSubject: StateSubject) {
     init {
         actionObservable.get.scan(initialState) { prevState, action ->

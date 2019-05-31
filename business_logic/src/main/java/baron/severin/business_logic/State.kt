@@ -1,5 +1,7 @@
 package baron.severin.business_logic
 
+import arrow.core.Either
+import baron.severin.domain_objects.SubredditDetails
 import io.reactivex.Observable
 import io.reactivex.subjects.Subject
 
@@ -7,4 +9,8 @@ import io.reactivex.subjects.Subject
 class StateObservable(val get: Observable<State>)
 class StateSubject(val get: Subject<State>)
 
-data class State(val temp: String)
+object Loading
+data class State(
+        val selectedSubreddit: Either<Loading, SubredditDetails>,
+        val currentScreen: CurrentScreen
+)
