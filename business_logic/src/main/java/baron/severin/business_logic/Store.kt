@@ -7,11 +7,11 @@ class Store(
         initialState: State,
         reducer: Reducer,
         actionObservable: ActionObservable,
-        stateSubject: StateSubject
+        stateRelay: StateRelay
 ) {
     init {
         actionObservable.get.scan(initialState) { prevState, action ->
             reducer(prevState, action)
-        }.subscribe { stateSubject.get.onNext(initialState) }
+        }.subscribe { stateRelay.get.accept(initialState) }
     }
 }

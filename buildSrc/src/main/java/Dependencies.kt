@@ -20,6 +20,7 @@ object Dependencies {
     const val rxJava = "io.reactivex.rxjava2:rxjava:2.2.8"
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
     const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:2.3.0"
+    const val rxRelay = "com.jakewharton.rxrelay2:rxrelay:2.1.0"
 
     // Arrow
     private const val arrow_version = "0.9.0"

@@ -1,11 +1,11 @@
 package baron.severin.business_logic
 
+import com.jakewharton.rxrelay2.Relay
 import io.reactivex.Observable
-import io.reactivex.subjects.Subject
 
 // This wrapper class allows it to be injected by Dagger
 class ActionObservable(val get: Observable<Action>)
-class ActionSubject(val get: Subject<Action>)
+class ActionRelay(val get: Relay<Action>)
 
 sealed class Action
 class TempAction : Action()
