@@ -1,6 +1,7 @@
 package seveida.firetvforreddit.dagger
 
 import baron.severin.business_logic.dagger.BusinessLogicComponent
+import baron.severin.common.dagger.AppScope
 import baron.severin.io.dagger.IoComponent
 import dagger.Component
 import dagger.android.AndroidInjectionModule

@@ -1,4 +1,4 @@
-package seveida.firetvforreddit.dagger
+package baron.severin.common.dagger
 
 import javax.inject.Scope
 
