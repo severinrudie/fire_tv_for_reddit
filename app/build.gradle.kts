@@ -46,6 +46,10 @@ dependencies {
     implementation(Dependencies.rxJava)
     implementation(Dependencies.rxAndroid)
     implementation(Dependencies.rxKotlin)
+    implementation(Dependencies.rxRelay)
+
+    // Arrow
+    implementation(Dependencies.arrow_core)
 
     // Dependency injection
     implementation(Dependencies.dagger)

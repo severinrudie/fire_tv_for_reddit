@@ -7,7 +7,7 @@ import io.reactivex.Observable
 
 // This wrapper class allows it to be injected by Dagger
 class StateObservable(val get: Observable<State>)
-class StateRelay(val get: Relay<State>)
+internal class StateRelay(val get: Relay<State>)
 
 object Loading
 data class State(

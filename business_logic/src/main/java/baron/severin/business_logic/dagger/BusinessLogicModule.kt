@@ -7,12 +7,20 @@ import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
 import dagger.Module
 import dagger.Provides
+import io.reactivex.android.schedulers.AndroidSchedulers
 
 @Module
 object BusinessLogicModule {
 
     @Provides @AppScope
-    fun providesActionRelay(): ActionRelay = ActionRelay(PublishRelay.create())
+    fun providesEventRelay(): EventRelay = EventRelay(PublishRelay.create())
+
+    @Provides @AppScope
+    internal fun providesEventObservable(eventRelay: EventRelay): EventObservable =
+            EventObservable(eventRelay.get.hide())
+
+    @Provides @AppScope
+    internal fun providesActionRelay(): ActionRelay = ActionRelay(PublishRelay.create())
 
     @Provides @AppScope
     internal fun providesActionObservable(relay: ActionRelay): ActionObservable =
@@ -22,8 +30,11 @@ object BusinessLogicModule {
     internal fun providesStateRelay(): StateRelay = StateRelay(BehaviorRelay.create())
 
     @Provides @AppScope
-    fun providesStateObservable(relay: StateRelay): StateObservable =
-            StateObservable(relay.get.hide())
+    internal fun providesStateObservable(relay: StateRelay): StateObservable =
+            StateObservable(
+                    relay.get.hide()
+                            .observeOn(AndroidSchedulers.mainThread())
+            )
 
     @Provides @AppScope
     internal fun providesDispatcher(

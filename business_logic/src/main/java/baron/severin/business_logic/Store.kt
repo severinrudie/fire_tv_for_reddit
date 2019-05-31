@@ -4,13 +4,13 @@ import android.annotation.SuppressLint
 import io.reactivex.schedulers.Schedulers
 
 @SuppressLint("CheckResult") // This subscription should always be active
-class Store(
-        initialState: State,
-        reducer: Reducer,
-        actionObservable: ActionObservable,
-        stateRelay: StateRelay
+internal class Store(
+        private val initialState: State,
+        private val reducer: Reducer,
+        private val actionObservable: ActionObservable,
+        private val stateRelay: StateRelay
 ) {
-    init {
+    internal fun init() {
         actionObservable.get
                 // All reduction needs to happen on the same thread
                 .observeOn(Schedulers.computation())

@@ -14,8 +14,9 @@ import kotlinx.android.synthetic.main.thread_item.view.threadTitle
 import kotlinx.android.synthetic.main.thread_item.view.threadVoteCount
 import seveida.firetvforreddit.R
 import baron.severin.domain_objects.ThreadMetadata
+import javax.inject.Inject
 
-class SubredditAdapter : RecyclerView.Adapter<SubredditViewHolder>() {
+class SubredditAdapter @Inject constructor() : RecyclerView.Adapter<SubredditViewHolder>() {
 
     private var items = emptyList<ThreadMetadata>()
 

@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import baron.severin.io.SubredditRepo
 import io.reactivex.Observable
 
-class Dispatcher(
+internal class Dispatcher(
         eventObservableWrapper: EventObservable,
         actionRelayWrapper: ActionRelay,
         private val subredditRepo: SubredditRepo
@@ -12,13 +12,10 @@ class Dispatcher(
     private val eventObservable = eventObservableWrapper.get
     private val actionRelay = actionRelayWrapper.get
 
-    init {
-        setup()
-    }
-
     @SuppressLint("CheckResult") // This subscription should always be active
-    private fun setup() {
-        eventObservable.subscribe { event ->
+    internal fun init() {
+        eventObservable
+                .subscribe { event ->
             when (event) {
                 is Event.SubredditSelected ->
                     getSubreddit(event.subredditName).subscribe { actionRelay.accept(it) }

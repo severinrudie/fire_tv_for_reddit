@@ -2,7 +2,9 @@ package baron.severin.business_logic
 
 import arrow.core.Either
 
-class Reducer {
+internal class Reducer {
+
+    // TODO do "r/${subredditDetails.subredditMetadata.displayName}" on subreddit load
 
     operator fun invoke(prevState: State, action: Action): State {
         return when (action) {
