@@ -1,6 +1,7 @@
 package baron.severin.business_logic
 
 import android.annotation.SuppressLint
+import android.util.Log
 import io.reactivex.schedulers.Schedulers
 
 @SuppressLint("CheckResult") // This subscription should always be active
@@ -14,8 +15,10 @@ internal class Store(
         actionObservable.get
                 // All reduction needs to happen on the same thread
                 .observeOn(Schedulers.computation())
+                .doOnNext { Log.d("SevData: Action: ", it.toString()) }
                 .scan(initialState) { prevState, action ->
                     reducer(prevState, action)
-                }.subscribe { stateRelay.get.accept(it) }
+                }.doOnNext { Log.d("SevData: State: ", it.toString()) }
+                .subscribe { stateRelay.get.accept(it) }
     }
 }

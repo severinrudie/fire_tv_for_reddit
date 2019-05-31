@@ -1,6 +1,7 @@
 package baron.severin.business_logic
 
 import android.annotation.SuppressLint
+import android.util.Log
 import baron.severin.io.SubredditRepo
 import io.reactivex.Observable
 
@@ -15,6 +16,7 @@ internal class Dispatcher(
     @SuppressLint("CheckResult") // This subscription should always be active
     internal fun init() {
         eventObservable
+                .doOnNext { Log.d("SevData: Event: ", it.toString()) }
                 .subscribe { event ->
             when (event) {
                 is Event.SubredditSelected ->
