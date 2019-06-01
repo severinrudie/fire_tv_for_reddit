@@ -17,6 +17,7 @@ object Dependencies {
     const val recyclerView = "androidx.recyclerview:recyclerview:1.0.0"
     const val ktx = "androidx.core:core-ktx:1.0.2"
     const val androidXLegacy = "androidx.legacy:legacy-support-v4:1.0.0"
+    const val design = "com.android.support:design:28.0.0"
 
     // RxJava
     const val rxJava = "io.reactivex.rxjava2:rxjava:2.2.8"
