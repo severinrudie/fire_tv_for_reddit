@@ -3,6 +3,9 @@ package baron.severin.business_logic
 import android.content.res.Resources
 import arrow.core.Either
 import baron.severin.domain_objects.SubredditDetails
+import baron.severin.presentation_objects.Loading
+import baron.severin.presentation_objects.ThreadItemState
+import baron.severin.presentation_objects.ToolbarState
 
 internal class Reducer(private val resources: Resources) {
 
@@ -22,7 +25,15 @@ internal class Reducer(private val resources: Resources) {
     private fun subredditLoaded(prevState: State, action: Action.SubredditLoaded): State =
             prevState.copy(
                     toolbarState = prevState.toolbarState.copy(title = getToolbarTitle(action.subreddit)),
-                    threadList = Either.right(action.subreddit.threadMetadataList)
+                    threadList = Either.right(action.subreddit.threadMetadataList.map { threadMetadata ->
+                        ThreadItemState(
+                                imageUrl = threadMetadata.previewImageUrl,
+                                title = threadMetadata.title,
+                                author = "u/${threadMetadata.op.username}",
+                                voteCount = "${threadMetadata.voteCount.up - threadMetadata.voteCount.down}",
+                                comments = "${threadMetadata.commentCount} comments"
+                        )
+                    })
             )
 
     private fun getToolbarTitle(subreddit: SubredditDetails): String {

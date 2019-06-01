@@ -1,7 +1,9 @@
 package baron.severin.business_logic
 
 import arrow.core.Either
-import baron.severin.domain_objects.ThreadMetadata
+import baron.severin.presentation_objects.Loading
+import baron.severin.presentation_objects.ThreadItemState
+import baron.severin.presentation_objects.ToolbarState
 import com.jakewharton.rxrelay2.Relay
 import io.reactivex.Observable
 
@@ -12,11 +14,5 @@ internal class StateRelay(val get: Relay<State>)
 data class State(
         val currentScreen: CurrentScreen,
         val toolbarState: ToolbarState,
-        val threadList: Either<Loading, List<ThreadMetadata>>
+        val threadList: Either<Loading, List<ThreadItemState>>
 )
-
-data class ToolbarState(
-        val title: CharSequence,
-        val inputHint: CharSequence
-)
-object Loading

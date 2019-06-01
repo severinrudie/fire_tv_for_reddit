@@ -30,6 +30,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(project(Dependencies.common))
     implementation(project(Dependencies.domain_objects))
+    implementation(project(Dependencies.presentation_objects))
     implementation(project(Dependencies.io))
 
     kapt(Dependencies.dagger_apt)

@@ -5,6 +5,8 @@ import arrow.core.Either
 import baron.severin.business_logic.*
 import baron.severin.common.dagger.AppScope
 import baron.severin.io.SubredditRepo
+import baron.severin.presentation_objects.Loading
+import baron.severin.presentation_objects.ToolbarState
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
 import dagger.Module
