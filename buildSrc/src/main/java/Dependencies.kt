@@ -7,7 +7,7 @@ object Dependencies {
     const val business_logic = ":business_logic"
     const val common = ":common"
 
-    // Language
+    // Kotlin
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${BuildConstants.kotlin_version}"
 
     // Android
@@ -54,6 +54,7 @@ object Dependencies {
     // Test Dependencies
     const val robolectric = "org.robolectric:robolectric:4.2"
     const val junit = "junit:junit:4.12"
+    const val mockk = "io.mockk:mockk:1.9.1"
     const val testRunner = "androidx.test:runner:1.1.1"
     const val espressoCore = "androidx.test.espresso:espresso-core:3.1.1"
 }

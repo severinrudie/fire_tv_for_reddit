@@ -1,0 +1,4 @@
+Notes to self
+
+- Set up CI
+- Support swapping color schemes

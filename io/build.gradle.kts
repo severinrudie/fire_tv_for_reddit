@@ -28,19 +28,10 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation(project(Dependencies.common))
     implementation(project(Dependencies.domain_objects))
     implementation(project(Dependencies.response_objects))
-    implementation(project(Dependencies.common))
 
-    implementation(Dependencies.kotlin_stdlib)
-
-    implementation(Dependencies.appCompat)
-
-    implementation(Dependencies.rxJava)
-    implementation(Dependencies.rxAndroid)
-    implementation(Dependencies.rxKotlin)
-
-    implementation(Dependencies.dagger)
     kapt(Dependencies.dagger_apt)
 
     implementation(Dependencies.okhttp)
@@ -50,13 +41,10 @@ dependencies {
     implementation(Dependencies.retrofitMoshiAdapter)
     kapt (Dependencies.moshiKapt)
 
-    // Java Time backport
-    implementation(Dependencies.threeTenAndroid)
-    // Allows the time backport to work during testing
-    testImplementation(Dependencies.threeTenJava)
-
+    // Testing
     testImplementation(Dependencies.robolectric)
     testImplementation(Dependencies.junit)
+    testImplementation(Dependencies.mockk)
     androidTestImplementation(Dependencies.testRunner)
     androidTestImplementation(Dependencies.espressoCore)
 }
