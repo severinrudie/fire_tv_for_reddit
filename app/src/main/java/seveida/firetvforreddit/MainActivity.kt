@@ -4,6 +4,7 @@ import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
 import android.view.KeyEvent
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
@@ -58,7 +59,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
                 .subscribe {
                     toolbarLeftTV.text = it.title
                     toolbarRightET.setText("")
-                    toolbarRightET.hint = it.inputHint
+                    toolbarRightTIL.hint = it.inputHint
                 }
 
         compositeDisposable += stateObs.get

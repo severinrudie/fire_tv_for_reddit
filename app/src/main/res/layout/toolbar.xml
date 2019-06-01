@@ -20,11 +20,16 @@
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
-    <EditText
-        android:id="@+id/toolbarRightET"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/toolbarRightTIL"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="200dp" />
+        android:layout_height="wrap_content">
+        <seveida.firetvforreddit.view.components.TextInputAutoCompleteTextView
+            android:id="@+id/toolbarRightET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="200dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
         android:id="@+id/toolbarRightIV"
