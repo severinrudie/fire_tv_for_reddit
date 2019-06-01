@@ -9,11 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.thread_item.view.threadImageView
-import kotlinx.android.synthetic.main.thread_item.view.threadTitle
-import kotlinx.android.synthetic.main.thread_item.view.threadVoteCount
 import seveida.firetvforreddit.R
 import baron.severin.domain_objects.ThreadMetadata
+import kotlinx.android.synthetic.main.thread_item.view.*
 import javax.inject.Inject
 
 class SubredditAdapter @Inject constructor() : RecyclerView.Adapter<SubredditViewHolder>() {
@@ -36,9 +34,11 @@ class SubredditAdapter @Inject constructor() : RecyclerView.Adapter<SubredditVie
     override fun onBindViewHolder(holder: SubredditViewHolder, position: Int) {
         val thread = items[position]
         with (holder.itemView) {
-            threadTitle.text = thread.title
-            threadVoteCount.text = thread.voteCount.toString()
             Picasso.get().load(thread.previewImageUrl).into(threadImageView)
+            threadTitle.text = thread.title
+            threadAuthor.text = "u/${thread.op.username}" // TODO move this to the data layer
+            threadVoteCount.text = (thread.voteCount.up - thread.voteCount.down).toString() // TODO move this to the data layer
+            threadCommentCount.text = "${thread.commentCount} comments" // TODO move this to the data layer
         }
     }
 }
