@@ -3,6 +3,7 @@ object Dependencies {
     const val app = ":app"
     const val domain_objects = ":domain_objects"
     const val response_objects = ":response_objects"
+    const val presentation_objects = ":presentation_objects"
     const val io = ":io"
     const val business_logic = ":business_logic"
     const val common = ":common"

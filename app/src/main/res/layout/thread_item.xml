@@ -1,25 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:background="@drawable/thread_background"
     android:focusable="true"
-    android:orientation="vertical">
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/threadImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_launcher_background" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topRowGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintGuide_percent="0"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottomRowGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintGuide_percent=".8" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/contentStartBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="threadImageView" />
 
     <TextView
         android:id="@+id/threadTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/tile_image_right_margin"
+        android:maxLines="2"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/contentStartBarrier"
+        app:layout_constraintTop_toTopOf="@+id/topRowGuideline"
+        tools:text="I did a thing" />
+
+
+    <TextView
+        android:id="@+id/threadAuthor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/tile_image_right_margin"
+        android:maxLines="1"
+        android:textAlignment="viewStart"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/contentStartBarrier"
+        app:layout_constraintTop_toBottomOf="@id/threadTitle"
+        tools:text="some_user_636" />
+
+    <ImageView
+        android:id="@+id/threadUpvote"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/tile_image_right_margin"
+        android:src="@drawable/ic_arrow_upward_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomRowGuideline"
+        app:layout_constraintStart_toEndOf="@+id/contentStartBarrier"
+        app:layout_constraintTop_toTopOf="@id/bottomRowGuideline" />
 
     <TextView
         android:id="@+id/threadVoteCount"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomRowGuideline"
+        app:layout_constraintStart_toEndOf="@id/threadUpvote"
+        app:layout_constraintTop_toTopOf="@+id/bottomRowGuideline"
+        tools:text="37" />
 
     <ImageView
-        android:id="@+id/threadImageView"
+        android:id="@+id/threadDownvote"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_arrow_downward_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/bottomRowGuideline"
+        app:layout_constraintStart_toEndOf="@+id/threadVoteCount"
+        app:layout_constraintTop_toTopOf="@id/bottomRowGuideline" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/threadCommentCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/bottomRowGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bottomRowGuideline"
+        tools:text="5 comments" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

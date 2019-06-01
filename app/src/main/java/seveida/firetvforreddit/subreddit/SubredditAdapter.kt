@@ -9,18 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.thread_item.view.threadImageView
-import kotlinx.android.synthetic.main.thread_item.view.threadTitle
-import kotlinx.android.synthetic.main.thread_item.view.threadVoteCount
 import seveida.firetvforreddit.R
-import baron.severin.domain_objects.ThreadMetadata
+import baron.severin.presentation_objects.ThreadItemState
+import kotlinx.android.synthetic.main.thread_item.view.*
 import javax.inject.Inject
 
 class SubredditAdapter @Inject constructor() : RecyclerView.Adapter<SubredditViewHolder>() {
 
-    private var items = emptyList<ThreadMetadata>()
+    private var items = emptyList<ThreadItemState>()
 
-    fun setItems(items: List<ThreadMetadata>) {
+    fun setItems(items: List<ThreadItemState>) {
         this.items = items
         notifyDataSetChanged()
     }
@@ -36,9 +34,11 @@ class SubredditAdapter @Inject constructor() : RecyclerView.Adapter<SubredditVie
     override fun onBindViewHolder(holder: SubredditViewHolder, position: Int) {
         val thread = items[position]
         with (holder.itemView) {
+            Picasso.get().load(thread.imageUrl).into(threadImageView)
             threadTitle.text = thread.title
-            threadVoteCount.text = thread.voteCount.toString()
-            Picasso.get().load(thread.previewImageUrl).into(threadImageView)
+            threadAuthor.text = thread.author
+            threadVoteCount.text = thread.voteCount
+            threadCommentCount.text = thread.comments
         }
     }
 }

@@ -30,8 +30,8 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(project(Dependencies.common))
-    implementation(project(Dependencies.domain_objects))
-    implementation(project(Dependencies.io)) // TODO remove (will live in bus logic)
+    implementation(project(Dependencies.presentation_objects))
+    implementation(project(Dependencies.io))
     implementation(project(Dependencies.business_logic))
 
     implementation(Dependencies.constraintLayout)
@@ -44,6 +44,9 @@ dependencies {
     implementation(Dependencies.dagger_android)
     implementation(Dependencies.dagger_android_support)
     kapt(Dependencies.dagger_android_apt)
+
+    // Allows the time backport to work during testing
+    testImplementation(Dependencies.threeTenJava)
 
     // Networking dependencies
     implementation(Dependencies.okhttp)

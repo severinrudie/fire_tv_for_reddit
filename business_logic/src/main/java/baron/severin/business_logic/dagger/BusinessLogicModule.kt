@@ -1,13 +1,20 @@
 package baron.severin.business_logic.dagger
 
+import android.content.res.Resources
+import arrow.core.Either
 import baron.severin.business_logic.*
 import baron.severin.common.dagger.AppScope
 import baron.severin.io.SubredditRepo
+import baron.severin.presentation_objects.Loading
+import baron.severin.presentation_objects.ToolbarState
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
 import dagger.Module
 import dagger.Provides
 import io.reactivex.android.schedulers.AndroidSchedulers
+import javax.inject.Named
+
+const val INITIAL_STATE = "INITIAL_STATE"
 
 @Module
 object BusinessLogicModule {
@@ -49,18 +56,27 @@ object BusinessLogicModule {
             )
 
     @Provides @AppScope
-    internal fun providesReducer(): Reducer = Reducer()
+    internal fun providesReducer(resources: Resources): Reducer = Reducer(resources)
 
     @Provides @AppScope
     internal fun providesStore(
             reducer: Reducer,
             actionObservable: ActionObservable,
-            stateRelay: StateRelay
+            stateRelay: StateRelay,
+            @Named(INITIAL_STATE) initialState: State
     ): Store =
             Store(
-                    initalState,
+                    initialState,
                     reducer,
                     actionObservable,
                     stateRelay
+            )
+
+    @Provides @Named(INITIAL_STATE)
+    internal fun providesInitialState(resources: Resources): State =
+            State(
+                currentScreen = CurrentScreen.SUBREDDIT,
+                toolbarState = ToolbarState("r/", resources.getString(R.string.search_for_subreddit)),
+                threadList = Either.left(Loading)
             )
 }

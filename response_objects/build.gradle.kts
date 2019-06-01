@@ -34,6 +34,9 @@ dependencies {
     implementation(Dependencies.moshi)
     kapt (Dependencies.moshiKapt)
 
+    // Allows the time backport to work during testing
+    testImplementation(Dependencies.threeTenJava)
+
     // Testing
     testImplementation(Dependencies.robolectric)
     testImplementation(Dependencies.junit)

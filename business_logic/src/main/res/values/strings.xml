@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Business_Logic</string>
+    <string name="search_for_subreddit">Search for Subreddit</string>
 </resources>
