@@ -10,6 +10,7 @@ object Dependencies {
 
     // Kotlin
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${BuildConstants.kotlin_version}"
+    const val kotlin_reflect = "org.jetbrains.kotlin:kotlin-reflect:${BuildConstants.kotlin_version}"
 
     // Android
     const val appCompat = "androidx.appcompat:appcompat:1.0.2"
@@ -17,6 +18,7 @@ object Dependencies {
     const val recyclerView = "androidx.recyclerview:recyclerview:1.0.0"
     const val ktx = "androidx.core:core-ktx:1.0.2"
     const val androidXLegacy = "androidx.legacy:legacy-support-v4:1.0.0"
+    const val design = "com.android.support:design:28.0.0"
 
     // RxJava
     const val rxJava = "io.reactivex.rxjava2:rxjava:2.2.8"

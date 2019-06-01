@@ -34,10 +34,15 @@ dependencies {
     implementation(project(Dependencies.io))
     implementation(project(Dependencies.business_logic))
 
+    // Kotlin
+    implementation(Dependencies.kotlin_reflect)
+
+    // Android
     implementation(Dependencies.constraintLayout)
     implementation(Dependencies.recyclerView)
     implementation(Dependencies.ktx)
     implementation(Dependencies.androidXLegacy)
+    implementation(Dependencies.design)
 
     // Dependency injection
     kapt(Dependencies.dagger_apt)

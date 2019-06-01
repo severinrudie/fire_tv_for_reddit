@@ -2,15 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/toolbarContainer"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
+    android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
     android:elevation="8dp"
     android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp">
+    android:orientation="horizontal">
 
     <TextView
+        android:layout_marginStart="16dp"
         android:id="@+id/toolbarLeftTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -20,16 +19,19 @@
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
-    <EditText
-        android:id="@+id/toolbarRightET"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/toolbarRightTIL"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="200dp" />
-
-    <ImageView
-        android:id="@+id/toolbarRightIV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_search_black_24dp" />
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:layout_height="wrap_content">
+        <seveida.firetvforreddit.view.components.TextInputAutoCompleteTextView
+            android:id="@+id/toolbarRightET"
+            android:layout_width="wrap_content"
+            android:textCursorDrawable="@null"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_search_black_24dp"
+            android:minWidth="200dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>
