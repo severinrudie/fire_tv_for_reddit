@@ -8,6 +8,7 @@ import baron.severin.business_logic.StateObservable
 import baron.severin.presentation_objects.Colors
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.toolbar.*
+import seveida.firetvforreddit.ext.createColorStateList
 import seveida.firetvforreddit.view.components.TextInputAutoCompleteTextView
 import java.lang.ref.WeakReference
 import javax.inject.Inject
@@ -61,14 +62,13 @@ class ToolbarStyler @Inject constructor(private val stateObs: StateObservable) {
                 false -> this.primary
             }
 
-    private fun Colors.getHintColorList() = ColorStateList(
-            /* states */ arrayOf(
-            intArrayOf(state_focused), // Focused
-            intArrayOf(-state_focused) // Unfocused
-    ),
-            /* colors */ intArrayOf(
-            this.accent,
-            this.text
-    )
+    private fun Colors.getHintColorList() = createColorStateList(
+            states = arrayOf(
+                    intArrayOf(state_focused), // Focused
+                    intArrayOf(-state_focused) // Unfocused
+            ), colors = intArrayOf(
+                    this.accent,
+                    this.text
+            )
     )
 }

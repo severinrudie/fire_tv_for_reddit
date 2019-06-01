@@ -7,5 +7,6 @@ data class ThreadItemState(
         val title: CharSequence,
         val author: CharSequence,
         val voteCount: CharSequence,
-        val comments: CharSequence
+        val comments: CharSequence,
+        val viewed: Boolean
 )

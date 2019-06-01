@@ -7,17 +7,24 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:focusable="true"
-    android:nextFocusRight="@id/threadUpvote"
-    android:padding="8dp">
+    android:nextFocusRight="@id/threadImageWrapper"
+    android:padding="4dp">
 
-    <ImageView
-        android:id="@+id/threadImageView"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+    <FrameLayout
+        android:id="@+id/threadImageWrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_launcher_background" />
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/threadImageView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            tools:src="@drawable/ic_launcher_background" />
+    </FrameLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/topRowGuideline"
@@ -41,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="right"
-        app:constraint_referenced_ids="threadImageView" />
+        app:constraint_referenced_ids="threadImageWrapper" />
 
     <TextView
         android:id="@+id/threadTitle"

@@ -9,10 +9,10 @@
     android:orientation="horizontal">
 
     <TextView
-        android:layout_marginStart="16dp"
         android:id="@+id/toolbarLeftTV"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp" />
 
     <Space
         android:layout_width="0dp"
@@ -22,16 +22,17 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/toolbarRightTIL"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:layout_height="wrap_content">
+        android:paddingEnd="16dp">
+
         <seveida.firetvforreddit.view.components.TextInputAutoCompleteTextView
             android:id="@+id/toolbarRightET"
             android:layout_width="wrap_content"
-            android:textCursorDrawable="@null"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_search_black_24dp"
-            android:minWidth="200dp"/>
+            android:minWidth="200dp"
+            android:textCursorDrawable="@null" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>

@@ -31,7 +31,8 @@ internal class Reducer(private val resources: Resources) {
                                 title = threadMetadata.title,
                                 author = "u/${threadMetadata.op.username}",
                                 voteCount = "${threadMetadata.voteCount.up - threadMetadata.voteCount.down}",
-                                comments = "${threadMetadata.commentCount} comments"
+                                comments = "${threadMetadata.commentCount} comments",
+                                viewed = false  // TODO this isnt correct. persist viewed info and use it here
                         )
                     })
             )
