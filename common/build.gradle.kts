@@ -51,7 +51,7 @@ dependencies {
     // Java Time backport
     api(Dependencies.threeTenAndroid)
     // Allows the time backport to work during testing
-    testApi(Dependencies.threeTenJava)
+    testImplementation(Dependencies.threeTenJava)
 
     // Testing
     testImplementation(Dependencies.robolectric)

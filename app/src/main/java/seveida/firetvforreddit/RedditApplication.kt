@@ -34,6 +34,7 @@ class RedditApplication : Application(), HasActivityInjector {
         val appComponent = DaggerAppComponent.builder()
                 .ioModule(IoModule)
                 .businessLogicModule(BusinessLogicModule)
+                .resources(applicationContext.resources)
                 .build()
         appComponent.inject(this)
     }

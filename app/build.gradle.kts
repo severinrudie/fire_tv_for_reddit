@@ -45,6 +45,9 @@ dependencies {
     implementation(Dependencies.dagger_android_support)
     kapt(Dependencies.dagger_android_apt)
 
+    // Allows the time backport to work during testing
+    testImplementation(Dependencies.threeTenJava)
+
     // Networking dependencies
     implementation(Dependencies.okhttp)
     implementation(Dependencies.retrofit)

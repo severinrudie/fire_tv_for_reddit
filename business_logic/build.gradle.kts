@@ -34,6 +34,9 @@ dependencies {
 
     kapt(Dependencies.dagger_apt)
 
+    // Allows the time backport to work during testing
+    testImplementation(Dependencies.threeTenJava)
+
     // Testing
     testImplementation(Dependencies.robolectric)
     testImplementation(Dependencies.junit)

@@ -16,6 +16,7 @@ data class State(
 )
 
 data class ToolbarState(
-        val title: String
+        val title: CharSequence,
+        val inputHint: CharSequence
 )
 object Loading

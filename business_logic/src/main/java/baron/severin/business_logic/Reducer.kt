@@ -1,9 +1,10 @@
 package baron.severin.business_logic
 
+import android.content.res.Resources
 import arrow.core.Either
 import baron.severin.domain_objects.SubredditDetails
 
-internal class Reducer {
+internal class Reducer(private val resources: Resources) {
 
     operator fun invoke(prevState: State, action: Action): State {
         return when (action) {
@@ -14,7 +15,7 @@ internal class Reducer {
     
     private fun loadingSubreddit(prevState: State): State =
             prevState.copy(
-                    toolbarState = ToolbarState("r/"),
+                    toolbarState = ToolbarState("r/", resources.getString(R.string.search_for_subreddit)),
                     threadList = Either.left(Loading)
             )
 

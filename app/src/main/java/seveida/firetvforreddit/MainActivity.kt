@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
                 .subscribe {
                     toolbarLeftTV.text = it.title
                     toolbarRightET.setText("")
+                    toolbarRightET.hint = it.inputHint
                 }
     }
 
