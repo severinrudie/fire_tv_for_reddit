@@ -6,6 +6,8 @@ package seveida.firetvforreddit.subreddit
 
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.StateListDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,13 +48,25 @@ class SubredditAdapter @Inject constructor(@Named(INITIAL_STATE) var colors: Col
             threadVoteCount.text = thread.voteCount
             threadCommentCount.text = thread.comments
 
+            val imageWrapperBackground = StateListDrawable()
+            imageWrapperBackground.addState(
+                    intArrayOf(android.R.attr.state_focused), // Focused
+                    ColorDrawable(colors.accent)
+            )
+            imageWrapperBackground.addState(
+                    intArrayOf(android.R.attr.state_focused), // Unfocused
+                    ColorDrawable(if (thread.viewed) colors.read else colors.unread)
+            )
+            threadImageWrapper.background = imageWrapperBackground
+
             listOf(threadUpvote, threadDownvote).forEach { view ->
                 view.setOnFocusChangeListener { v, hasFocus ->
-                    val v = v as ImageView
-                    when (hasFocus) {
-                        true -> v.colorFilter = PorterDuffColorFilter(colors.accent, PorterDuff.Mode.SRC_ATOP) // TODO is there a better way to do this?
-                        false -> v.colorFilter = PorterDuffColorFilter(colors.text, PorterDuff.Mode.SRC_ATOP)
+                    val color = when (hasFocus) {
+                        true -> colors.accent
+                        false -> colors.text
                     }
+                    val iv = v as ImageView
+                    iv.colorFilter = PorterDuffColorFilter(color, PorterDuff.Mode.SRC_ATOP)
                 }
             }
             threadWrapper.setBackgroundColor(colors.unread)
