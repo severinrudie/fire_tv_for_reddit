@@ -2,9 +2,8 @@ package seveida.firetvforreddit
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.text.Editable
 import android.view.KeyEvent
-import android.widget.ArrayAdapter
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
@@ -20,13 +19,15 @@ import io.reactivex.rxkotlin.plusAssign
 import kotlinx.android.synthetic.main.toolbar.*
 import seveida.firetvforreddit.ext.isSelect
 import seveida.firetvforreddit.subreddit.SubredditFragment
+import seveida.firetvforreddit.view.components.TextInputAutoCompleteTextView
+import java.lang.ref.WeakReference
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     @Inject lateinit var dispatchingFragmentInjector: DispatchingAndroidInjector<Fragment>
-    @Inject lateinit var stateObs: StateObservable
     @Inject lateinit var eventRelay: EventRelay
+    @Inject lateinit var toolbarStyler: ToolbarStyler
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -52,42 +53,8 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = dispatchingFragmentInjector
 
-    private fun observeToolbarState() {
-        compositeDisposable += stateObs.get
-                .map { it.toolbarState }
-                .distinctUntilChanged()
-                .subscribe {
-                    toolbarLeftTV.text = it.title
-                    toolbarRightET.setText("")
-                    toolbarRightTIL.hint = it.inputHint
-                }
-
-        compositeDisposable += stateObs.get
-                .map { it.colors }
-                .distinctUntilChanged()
-                .subscribe { colors ->
-                    toolbarContainer.setBackgroundColor(colors.primary)
-                    toolbarLeftTV.setTextColor(colors.text)
-
-                    val colorStateList = ColorStateList(
-                            /* states */ arrayOf(
-                                    intArrayOf(android.R.attr.state_focused), // Focused
-                                    intArrayOf(-android.R.attr.state_focused) // Unfocused
-                            ),
-                            /* colors */ intArrayOf(
-                            colors.accent,
-                            colors.text
-                            )
-                    )
-                    toolbarRightET.setTextColor(colorStateList)
-                    ViewCompat.setBackgroundTintList(toolbarRightET, colorStateList)
-                    // TODO set edittext cursor color
-                    // TODO maybe when focused, ET background == white
-                }
-    }
-
     private fun setupToolbar() {
-        observeToolbarState()
+        toolbarStyler.observeToolbarState(WeakReference(this))
 
         toolbarRightET.setImeActionLabel("Load Subreddit", KeyEvent.KEYCODE_ENTER)
 

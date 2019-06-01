@@ -10,6 +10,7 @@ object Dependencies {
 
     // Kotlin
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${BuildConstants.kotlin_version}"
+    const val kotlin_reflect = "org.jetbrains.kotlin:kotlin-reflect:${BuildConstants.kotlin_version}"
 
     // Android
     const val appCompat = "androidx.appcompat:appcompat:1.0.2"

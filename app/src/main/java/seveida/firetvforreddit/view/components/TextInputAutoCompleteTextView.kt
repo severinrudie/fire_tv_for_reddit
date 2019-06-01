@@ -2,6 +2,7 @@ package seveida.firetvforreddit.view.components
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import android.view.inputmethod.InputConnection
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView
@@ -29,4 +30,17 @@ class TextInputAutoCompleteTextView : AppCompatAutoCompleteTextView {
         }
         return ic
     }
+
+    val textInputLayout: TextInputLayout
+        get() {
+            var parent = this.parent
+            while (parent is View) {
+                if (parent is TextInputLayout) {
+                    return parent
+                }
+                parent = parent.getParent()
+            }
+
+            throw IllegalStateException("${this::class.simpleName} used outside of a ${TextInputLayout::class.simpleName}")
+        }
 }
