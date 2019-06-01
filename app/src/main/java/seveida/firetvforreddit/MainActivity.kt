@@ -1,9 +1,11 @@
 package seveida.firetvforreddit
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
 import android.view.KeyEvent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import baron.severin.business_logic.Event
 import baron.severin.business_logic.EventRelay
@@ -52,10 +54,34 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     private fun observeToolbarState() {
         compositeDisposable += stateObs.get
                 .map { it.toolbarState }
+                .distinctUntilChanged()
                 .subscribe {
                     toolbarLeftTV.text = it.title
                     toolbarRightET.setText("")
                     toolbarRightET.hint = it.inputHint
+                }
+
+        compositeDisposable += stateObs.get
+                .map { it.colors }
+                .distinctUntilChanged()
+                .subscribe { colors ->
+                    toolbarContainer.setBackgroundColor(colors.primary.toInt())
+                    toolbarLeftTV.setTextColor(colors.text.toInt())
+
+                    val colorStateList = ColorStateList(
+                            /* states */ arrayOf(
+                                    intArrayOf(android.R.attr.state_focused), // Focused
+                                    intArrayOf(-android.R.attr.state_focused) // Unfocused
+                            ),
+                            /* colors */ intArrayOf(
+                                    colors.accent.toInt(),
+                                    colors.text.toInt()
+                            )
+                    )
+                    toolbarRightET.setTextColor(colorStateList)
+                    ViewCompat.setBackgroundTintList(toolbarRightET, colorStateList)
+                    // TODO set edittext cursor color
+                    // TODO maybe when focused, ET background == white
                 }
     }
 
