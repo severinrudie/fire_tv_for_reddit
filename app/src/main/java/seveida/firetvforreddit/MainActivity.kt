@@ -65,8 +65,8 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
                 .map { it.colors }
                 .distinctUntilChanged()
                 .subscribe { colors ->
-                    toolbarContainer.setBackgroundColor(colors.primary.toInt())
-                    toolbarLeftTV.setTextColor(colors.text.toInt())
+                    toolbarContainer.setBackgroundColor(colors.primary)
+                    toolbarLeftTV.setTextColor(colors.text)
 
                     val colorStateList = ColorStateList(
                             /* states */ arrayOf(
@@ -74,8 +74,8 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
                                     intArrayOf(-android.R.attr.state_focused) // Unfocused
                             ),
                             /* colors */ intArrayOf(
-                                    colors.accent.toInt(),
-                                    colors.text.toInt()
+                            colors.accent,
+                            colors.text
                             )
                     )
                     toolbarRightET.setTextColor(colorStateList)
