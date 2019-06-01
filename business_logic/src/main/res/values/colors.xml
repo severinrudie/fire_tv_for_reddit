@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="color_default_primary">#5f99cf</color>
+    <color name="color_default_accent">#ff4500</color>
+    <color name="color_default_text">#333333</color>
+    <color name="color_default_unread">#fafafa</color>
+    <color name="color_default_read">#cee3f8</color>
+
+    <!-- Used in rare places where colors should not change (e.g., EditText background -->
+    <color name="color_white">#fafafa</color>
+
+</resources>
