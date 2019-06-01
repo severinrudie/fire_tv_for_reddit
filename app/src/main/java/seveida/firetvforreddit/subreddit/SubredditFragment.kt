@@ -53,11 +53,19 @@ class SubredditFragment : Fragment() {
     private fun observeState() {
         compositeDisposable += stateObs
                 .map { it.threadList }
+                .distinctUntilChanged()
                 .subscribe { threadList ->
                     threadList.fold(
                             ifLeft = { setLoading() },
                             ifRight = { subredditAdapter.setItems(it) }
                     )
+                }
+
+        compositeDisposable += stateObs
+                .map { it.colors }
+                .distinctUntilChanged()
+                .subscribe { colors ->
+                    subredditAdapter.colors = colors
                 }
     }
 

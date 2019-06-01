@@ -5,6 +5,7 @@ import arrow.core.Either
 import baron.severin.business_logic.*
 import baron.severin.common.dagger.AppScope
 import baron.severin.io.SubredditRepo
+import baron.severin.presentation_objects.Colors
 import baron.severin.presentation_objects.Loading
 import baron.severin.presentation_objects.ToolbarState
 import com.jakewharton.rxrelay2.BehaviorRelay
@@ -73,8 +74,18 @@ object BusinessLogicModule {
             )
 
     @Provides @Named(INITIAL_STATE)
-    internal fun providesInitialState(resources: Resources): State =
+    fun providesInitialColors(): Colors =
+            Colors( // TODO pick real colors (these are to make it obvious where existing values are being used)
+                    primary = 0xffff8800, // TODO move to colors resource
+                    accent = 0xffcc0000,
+                    text = 0xff222222,
+                    unreadThread = 0x33999999
+            )
+
+    @Provides @Named(INITIAL_STATE)
+    internal fun providesInitialState(resources: Resources, @Named(INITIAL_STATE) colors: Colors): State =
             State(
+                colors = colors,
                 currentScreen = CurrentScreen.SUBREDDIT,
                 toolbarState = ToolbarState("r/", resources.getString(R.string.search_for_subreddit)),
                 threadList = Either.left(Loading)

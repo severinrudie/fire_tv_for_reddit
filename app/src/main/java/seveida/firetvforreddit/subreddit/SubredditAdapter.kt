@@ -4,23 +4,29 @@
 
 package seveida.firetvforreddit.subreddit
 
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import baron.severin.business_logic.dagger.INITIAL_STATE
+import baron.severin.presentation_objects.Colors
 import com.squareup.picasso.Picasso
 import seveida.firetvforreddit.R
 import baron.severin.presentation_objects.ThreadItemState
 import kotlinx.android.synthetic.main.thread_item.view.*
 import javax.inject.Inject
+import javax.inject.Named
 
-class SubredditAdapter @Inject constructor() : RecyclerView.Adapter<SubredditViewHolder>() {
+class SubredditAdapter @Inject constructor(@Named(INITIAL_STATE) var colors: Colors) : RecyclerView.Adapter<SubredditViewHolder>() {
 
     private var items = emptyList<ThreadItemState>()
 
     fun setItems(items: List<ThreadItemState>) {
         this.items = items
-        notifyDataSetChanged()
+        notifyDataSetChanged() // TODO diffutil
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubredditViewHolder {
@@ -39,6 +45,23 @@ class SubredditAdapter @Inject constructor() : RecyclerView.Adapter<SubredditVie
             threadAuthor.text = thread.author
             threadVoteCount.text = thread.voteCount
             threadCommentCount.text = thread.comments
+
+            listOf(threadUpvote, threadDownvote).forEach { view ->
+                view.setOnFocusChangeListener { v, hasFocus ->
+                    val v = v as ImageView
+                    when (hasFocus) {
+                        true -> v.colorFilter = PorterDuffColorFilter(colors.accent.toInt(), PorterDuff.Mode.SRC_ATOP) // TODO is there a better way to do this?
+                        false -> v.colorFilter = PorterDuffColorFilter(colors.text.toInt(), PorterDuff.Mode.SRC_ATOP)
+                    }
+                }
+            }
+            threadWrapper.setBackgroundColor(colors.unreadThread.toInt())
+            threadWrapper.setOnFocusChangeListener { v, hasFocus ->
+                when (hasFocus) {
+                    true -> v.setBackgroundColor(colors.accent.toInt())
+                    false -> v.setBackgroundColor(colors.unreadThread.toInt())
+                }
+            }
         }
     }
 }

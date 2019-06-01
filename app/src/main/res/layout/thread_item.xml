@@ -2,11 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/threadWrapper"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:background="@drawable/thread_background"
     android:focusable="true"
+    android:nextFocusRight="@id/threadUpvote"
     android:padding="8dp">
 
     <ImageView
@@ -73,6 +74,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/tile_image_right_margin"
+        android:focusable="true"
+        android:nextFocusLeft="@id/threadWrapper"
         android:src="@drawable/ic_arrow_upward_black_24dp"
         app:layout_constraintBottom_toBottomOf="@+id/bottomRowGuideline"
         app:layout_constraintStart_toEndOf="@+id/contentStartBarrier"
@@ -93,6 +96,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:focusable="true"
+        android:nextFocusRight="@id/threadDownvote"
         android:src="@drawable/ic_arrow_downward_black_24dp"
         app:layout_constraintBottom_toBottomOf="@id/bottomRowGuideline"
         app:layout_constraintStart_toEndOf="@+id/threadVoteCount"
