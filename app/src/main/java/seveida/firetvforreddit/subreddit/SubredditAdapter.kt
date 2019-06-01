@@ -61,11 +61,12 @@ class SubredditAdapter @Inject constructor(@Named(INITIAL_STATE) var colors: Col
 
             listOf(threadUpvote, threadDownvote).forEach { view ->
                 view.setOnFocusChangeListener { v, hasFocus ->
-                    val v = v as ImageView
-                    when (hasFocus) {
-                        true -> v.colorFilter = PorterDuffColorFilter(colors.accent, PorterDuff.Mode.SRC_ATOP) // TODO is there a better way to do this?
-                        false -> v.colorFilter = PorterDuffColorFilter(colors.text, PorterDuff.Mode.SRC_ATOP)
+                    val color = when (hasFocus) {
+                        true -> colors.accent
+                        false -> colors.text
                     }
+                    val iv = v as ImageView
+                    iv.colorFilter = PorterDuffColorFilter(color, PorterDuff.Mode.SRC_ATOP)
                 }
             }
             threadWrapper.setBackgroundColor(colors.unread)
