@@ -29,30 +29,17 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation(project(Dependencies.common))
     implementation(project(Dependencies.domain_objects))
     implementation(project(Dependencies.io)) // TODO remove (will live in bus logic)
     implementation(project(Dependencies.business_logic))
-    implementation(project(Dependencies.common))
 
-    implementation(Dependencies.kotlin_stdlib)
-
-    implementation(Dependencies.appCompat)
     implementation(Dependencies.constraintLayout)
     implementation(Dependencies.recyclerView)
     implementation(Dependencies.ktx)
     implementation(Dependencies.androidXLegacy)
 
-    // RxJava
-    implementation(Dependencies.rxJava)
-    implementation(Dependencies.rxAndroid)
-    implementation(Dependencies.rxKotlin)
-    implementation(Dependencies.rxRelay)
-
-    // Arrow
-    implementation(Dependencies.arrow_core)
-
     // Dependency injection
-    implementation(Dependencies.dagger)
     kapt(Dependencies.dagger_apt)
     implementation(Dependencies.dagger_android)
     implementation(Dependencies.dagger_android_support)
@@ -66,17 +53,13 @@ dependencies {
     implementation(Dependencies.retrofitMoshiAdapter)
     kapt (Dependencies.moshiKapt)
 
-    // Java Time backport
-    implementation(Dependencies.threeTenAndroid)
-    // Allows the time backport to work during testing
-    testImplementation(Dependencies.threeTenJava)
-
     // Picasso
     implementation(Dependencies.picasso)
 
-    // Test Dependencies
+    // Testing
     testImplementation(Dependencies.robolectric)
     testImplementation(Dependencies.junit)
+    testImplementation(Dependencies.mockk)
     androidTestImplementation(Dependencies.testRunner)
     androidTestImplementation(Dependencies.espressoCore)
 }

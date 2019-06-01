@@ -27,17 +27,36 @@ android {
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    api(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(Dependencies.kotlin_stdlib)
+    // Kotlin
+    api(Dependencies.kotlin_stdlib)
 
-    implementation(Dependencies.appCompat)
+    // Android
+    api(Dependencies.appCompat)
 
-    implementation(Dependencies.dagger)
+    // RxJava
+    api(Dependencies.rxJava)
+    api(Dependencies.rxAndroid)
+    api(Dependencies.rxKotlin)
+    api(Dependencies.rxRelay)
+
+    // Arrow
+    api(Dependencies.arrow_core)
+
+    // Dagger
+    api(Dependencies.dagger)
     kapt(Dependencies.dagger_apt)
 
+    // Java Time backport
+    api(Dependencies.threeTenAndroid)
+    // Allows the time backport to work during testing
+    testApi(Dependencies.threeTenJava)
+
+    // Testing
     testImplementation(Dependencies.robolectric)
     testImplementation(Dependencies.junit)
+    testImplementation(Dependencies.mockk)
     androidTestImplementation(Dependencies.testRunner)
     androidTestImplementation(Dependencies.espressoCore)
 }
