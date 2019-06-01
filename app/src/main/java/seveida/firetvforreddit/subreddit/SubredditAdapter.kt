@@ -55,11 +55,11 @@ class SubredditAdapter @Inject constructor(@Named(INITIAL_STATE) var colors: Col
                     }
                 }
             }
-            threadWrapper.setBackgroundColor(colors.unreadThread.toInt())
+            threadWrapper.setBackgroundColor(colors.unread.toInt())
             threadWrapper.setOnFocusChangeListener { v, hasFocus ->
                 when (hasFocus) {
                     true -> v.setBackgroundColor(colors.accent.toInt())
-                    false -> v.setBackgroundColor(colors.unreadThread.toInt())
+                    false -> v.setBackgroundColor(colors.unread.toInt())
                 }
             }
         }

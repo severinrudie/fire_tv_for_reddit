@@ -1,6 +1,7 @@
 package baron.severin.business_logic.dagger
 
 import android.content.res.Resources
+import androidx.core.content.res.ResourcesCompat
 import arrow.core.Either
 import baron.severin.business_logic.*
 import baron.severin.common.dagger.AppScope
@@ -74,12 +75,14 @@ object BusinessLogicModule {
             )
 
     @Provides @Named(INITIAL_STATE)
-    fun providesInitialColors(): Colors =
-            Colors( // TODO pick real colors (these are to make it obvious where existing values are being used)
-                    primary = 0xffff8800, // TODO move to colors resource
-                    accent = 0xffcc0000,
-                    text = 0xff222222,
-                    unreadThread = 0x33999999
+    fun providesInitialColors(resources: Resources): Colors =
+            Colors(
+                    primary = ResourcesCompat.getColor(resources, R.color.color_default_primary, null),
+                    accent = ResourcesCompat.getColor(resources, R.color.color_default_accent, null),
+                    text = ResourcesCompat.getColor(resources, R.color.color_default_text, null),
+                    unread = ResourcesCompat.getColor(resources, R.color.color_default_unread, null),
+                    read = ResourcesCompat.getColor(resources, R.color.color_default_read, null),
+                    white = ResourcesCompat.getColor(resources, R.color.color_white, null)
             )
 
     @Provides @Named(INITIAL_STATE)
