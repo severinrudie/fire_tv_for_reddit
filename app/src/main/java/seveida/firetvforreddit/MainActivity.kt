@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         toolbarRightET.setOnEditorActionListener { view, _, event ->
             if (event.isSelect()) {
-                eventRelay.get.accept(Event.SubredditSelected(view.text.toString()))
+                eventRelay.get.accept(Event.SubredditSelected(view.text))
                 return@setOnEditorActionListener true
             }
             false

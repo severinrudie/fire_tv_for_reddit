@@ -26,7 +26,7 @@ internal class Dispatcher(
     }
 
     // TODO handle failure case
-    private fun getSubreddit(name: String): Observable<Action> {
+    private fun getSubreddit(name: CharSequence): Observable<Action> {
         val load: Action = Action.LoadingSubreddit
         val loadedObs: Observable<Action> = subredditRepo.getSubreddit(name)
                 .map { Action.SubredditLoaded(it) }
