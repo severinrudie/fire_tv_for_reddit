@@ -9,6 +9,8 @@ import baron.severin.io.SubredditApi
 import dagger.Lazy
 import dagger.Module
 import dagger.Provides
+import io.reactivex.Observable
+import io.reactivex.schedulers.Schedulers
 import net.dean.jraw.RedditClient
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -58,10 +60,14 @@ object IoModule {
             Credentials.userlessApp(IgnoredSecrets.CLIENT_ID, deviceId)
 
     /**
-     * Note that client init makes a network request. Do this off of the main
-     * thread (e.g., inject [Lazy] and get from another thread)
+     * We need to run this on a background thread because client init makes a network request
      */
     @Provides @AppScope
-    internal fun providesRedditClient(networkAdapter: NetworkAdapter, credentials: Credentials): RedditClient =
-            OAuthHelper.automatic(networkAdapter, credentials)
+    internal fun providesRedditClient(networkAdapter: NetworkAdapter, credentials: Credentials): RedditObs =
+            RedditObs(
+                    Observable.fromCallable { OAuthHelper.automatic(networkAdapter, credentials) }
+                            .subscribeOn(Schedulers.io())
+                            .replay(1)
+                            .autoConnect(0)
+            )
 }
