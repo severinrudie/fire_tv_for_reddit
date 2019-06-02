@@ -25,7 +25,7 @@ interface AppComponent {
         fun app(app: Application): Builder
         fun businessLogicModule(businessLogicModule: BusinessLogicModule): Builder
         fun ioModule(ioModule: IoModule): Builder
-        fun appModule(appModule: AppModule): Builder
+//        fun appModule(appModule: AppModule): Builder
         fun build(): AppComponent
     }
 }
