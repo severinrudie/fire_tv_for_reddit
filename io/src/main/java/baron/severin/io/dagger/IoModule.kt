@@ -26,10 +26,7 @@ import javax.inject.Named
 object IoModule {
 
     @Provides @AppScope
-//    internal fun providesOkHttp(): OkHttpClient = OkHttpClient()
-    internal fun providesOkHttp(): OkHttpClient = OkHttpClient.Builder()
-            .addInterceptor(LoggingInterceptor())
-            .build()
+    internal fun providesOkHttp(): OkHttpClient = OkHttpClient()
 
     @Provides @AppScope
     internal fun providesRetrofit(httpClient: OkHttpClient): Retrofit = Retrofit.Builder()

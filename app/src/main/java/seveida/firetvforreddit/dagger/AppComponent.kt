@@ -12,7 +12,7 @@ import seveida.firetvforreddit.RedditApplication
 
 @AppScope
 @Component(
-        modules = [ActivityBindingModule::class, AndroidInjectionModule::class, BusinessLogicModule::class, IoModule::class]
+        modules = [ActivityBindingModule::class, AndroidInjectionModule::class, BusinessLogicModule::class, IoModule::class, AppModule::class]
 )
 interface AppComponent {
     fun inject(app: RedditApplication)
@@ -25,7 +25,7 @@ interface AppComponent {
         fun app(app: Application): Builder
         fun businessLogicModule(businessLogicModule: BusinessLogicModule): Builder
         fun ioModule(ioModule: IoModule): Builder
-//        fun appModule(appModule: AppModule): Builder
+        fun appModule(appModule: AppModule): Builder
         fun build(): AppComponent
     }
 }

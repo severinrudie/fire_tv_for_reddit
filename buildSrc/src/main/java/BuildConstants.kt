@@ -8,7 +8,7 @@ object BuildConstants {
     const val minSdkVersion = 21
     const val targetSdkVersion = 28
     const val versionCode = 1
-    const val versionName = "1.0"
+    const val versionName = "0.1-ALPHA"
     const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     const val minifyEnabled = false
 }
