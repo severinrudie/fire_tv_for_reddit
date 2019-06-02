@@ -10,6 +10,7 @@ import dagger.android.AndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
 import dagger.android.DispatchingAndroidInjector
+import seveida.firetvforreddit.dagger.AppModule
 import seveida.firetvforreddit.dagger.DaggerAppComponent
 
 class RedditApplication : Application(), HasActivityInjector {
@@ -34,7 +35,9 @@ class RedditApplication : Application(), HasActivityInjector {
         val appComponent = DaggerAppComponent.builder()
                 .ioModule(IoModule)
                 .businessLogicModule(BusinessLogicModule)
+                .appModule(AppModule)
                 .resources(applicationContext.resources)
+                .app(this)
                 .build()
         appComponent.inject(this)
     }

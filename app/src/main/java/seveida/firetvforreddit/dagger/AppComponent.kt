@@ -1,5 +1,6 @@
 package seveida.firetvforreddit.dagger
 
+import android.app.Application
 import android.content.res.Resources
 import baron.severin.business_logic.dagger.BusinessLogicModule
 import baron.severin.common.dagger.AppScope
@@ -20,8 +21,11 @@ interface AppComponent {
     interface Builder {
         @BindsInstance
         fun resources(resources: Resources): Builder
+        @BindsInstance
+        fun app(app: Application): Builder
         fun businessLogicModule(businessLogicModule: BusinessLogicModule): Builder
         fun ioModule(ioModule: IoModule): Builder
+        fun appModule(appModule: AppModule): Builder
         fun build(): AppComponent
     }
 }
