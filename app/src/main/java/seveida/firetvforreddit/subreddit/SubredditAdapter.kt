@@ -22,7 +22,9 @@ import kotlinx.android.synthetic.main.thread_item.view.*
 import javax.inject.Inject
 import javax.inject.Named
 
-class SubredditAdapter @Inject constructor(@Named(INITIAL_STATE) var colors: Colors) : RecyclerView.Adapter<SubredditViewHolder>() {
+class SubredditAdapter @Inject constructor(
+        @Named(INITIAL_STATE) var colors: Colors
+) : RecyclerView.Adapter<SubredditViewHolder>() {
 
     private var items = emptyList<ThreadItemState>()
 

@@ -74,6 +74,9 @@ object BusinessLogicModule {
                     stateRelay
             )
 
+    @Provides
+    fun temp() : Colors = Colors(1,1,1,1,1,1)
+
     @Provides @Named(INITIAL_STATE)
     fun providesInitialColors(resources: Resources): Colors =
             Colors(
