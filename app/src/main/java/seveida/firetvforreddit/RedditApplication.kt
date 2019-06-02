@@ -8,6 +8,7 @@ import baron.severin.common.dagger.DiConstants
 import baron.severin.io.UserlessLoginApi
 import baron.severin.io.dagger.IoModule
 import baron.severin.io.requestUserlessCredentials
+import baron.severin.io.session.SessionManager
 import com.jakewharton.threetenabp.AndroidThreeTen
 import dagger.android.AndroidInjector
 import dagger.android.HasActivityInjector
@@ -26,8 +27,7 @@ class RedditApplication : Application(), HasActivityInjector {
     @Inject lateinit var dataFlowInitializer: DataFlowInitializer
 
 
-    @Inject lateinit var retrofit: Retrofit
-    @field:[Inject Named(DiConstants.DEVICE_UUID)] lateinit var deviceId: UUID
+    @Inject lateinit var sessionManager: SessionManager // TODO temp
 
     override fun onCreate() {
         super.onCreate()
@@ -54,17 +54,18 @@ class RedditApplication : Application(), HasActivityInjector {
 
 
 
-        // TODO temp below
-        val api = retrofit.create(UserlessLoginApi::class.java)
-        val t = api.requestUserlessCredentials(deviceId)
-                .subscribeOn(Schedulers.io())
-//                .subscribe { res: Response<UserlessAuthorization> ->
-                .subscribe { res ->
-                    println("SEVTEST: response: $res")
-                    if (res.isSuccessful) {
-                        println("SEVTEST: auth: ${res.body()}")
-                    }
-                }
+//        // TODO temp below
+//        val api = retrofit.create(UserlessLoginApi::class.java)
+//        val t = api.requestUserlessCredentials(deviceId)
+//                .subscribeOn(Schedulers.io())
+////                .subscribe { res: Response<UserlessAuthorization> ->
+//                .subscribe { res ->
+//                    println("SEVTEST: response: $res")
+//                    if (res.isSuccessful) {
+//                        println("SEVTEST: auth: ${res.body()}")
+//                    }
+//                }
+        val t = sessionManager.loggedIn.subscribe()
 
     }
 

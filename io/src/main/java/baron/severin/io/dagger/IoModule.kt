@@ -7,6 +7,7 @@ import baron.severin.common.IgnoredSecrets
 import baron.severin.io.BuildConfig
 import baron.severin.io.Interceptors.LoggingInterceptor
 import baron.severin.io.SubredditApi
+import baron.severin.io.UserlessLoginApi
 import dagger.Lazy
 import dagger.Module
 import dagger.Provides
@@ -39,5 +40,9 @@ object IoModule {
     @Provides @AppScope
     internal fun providesSubredditApi(retrofit: Retrofit): SubredditApi =
             retrofit.create(SubredditApi::class.java)
+
+    @Provides @AppScope
+    internal fun providesUserlessLoginApi(retrofit: Retrofit): UserlessLoginApi =
+            retrofit.create(UserlessLoginApi::class.java)
 
 }

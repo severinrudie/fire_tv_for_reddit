@@ -3,7 +3,7 @@ package baron.severin.response_objects.conversions
 import android.net.Uri
 import baron.severin.domain_objects.SubredditDetails
 import baron.severin.domain_objects.SubredditMetadata
-import baron.severin.response_objects.raw.response.SubredditResponse
+import baron.severin.response_objects.raw.response.api.json.SubredditResponse
 
 fun SubredditResponse.toSubredditDetails(): SubredditDetails {
     val metadata = this.toSubredditMetadata()
