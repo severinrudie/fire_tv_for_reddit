@@ -1,6 +1,6 @@
 package baron.severin.io
 
-import baron.severin.response_objects.raw.response.SubredditResponse
+import baron.severin.response_objects.raw.response.api.json.SubredditResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path

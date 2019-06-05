@@ -32,6 +32,7 @@ dependencies {
     implementation(project(Dependencies.common))
     implementation(project(Dependencies.presentation_objects))
     implementation(project(Dependencies.io))
+    implementation(project(Dependencies.response_objects)) // TODO temp
     implementation(project(Dependencies.business_logic))
 
     // Kotlin

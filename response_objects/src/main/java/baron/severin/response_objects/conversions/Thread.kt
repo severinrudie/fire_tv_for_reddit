@@ -4,7 +4,7 @@ import android.net.Uri
 import baron.severin.domain_objects.ThreadMetadata
 import baron.severin.domain_objects.UserMetadata
 import baron.severin.domain_objects.VoteCount
-import baron.severin.response_objects.raw.response.Child
+import baron.severin.response_objects.raw.response.api.json.Child
 import org.threeten.bp.Instant
 import org.threeten.bp.ZoneId
 
