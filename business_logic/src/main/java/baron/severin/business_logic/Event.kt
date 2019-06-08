@@ -1,5 +1,6 @@
 package baron.severin.business_logic
 
+import baron.severin.presentation_objects.Colors
 import com.jakewharton.rxrelay2.Relay
 import io.reactivex.Observable
 
@@ -10,4 +11,5 @@ class EventRelay(val get: Relay<Event>)
 // Sent by the UI
 sealed class Event {
     data class SubredditSelected(val subredditName: CharSequence) : Event()
+    data class ColorsChanged(val colors: Colors) : Event()
 }

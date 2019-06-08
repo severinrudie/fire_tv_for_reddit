@@ -13,6 +13,7 @@ internal class Reducer(private val resources: Resources) {
         return when (action) {
             is Action.LoadingSubreddit -> loadingSubreddit(prevState)
             is Action.SubredditLoaded -> subredditLoaded(prevState, action)
+            is Action.ColorsChanged -> changeColors(prevState, action)
         }
     }
     
@@ -40,4 +41,7 @@ internal class Reducer(private val resources: Resources) {
     private fun getToolbarTitle(subreddit: SubredditDetails): String {
         return "r/${subreddit.subredditMetadata.displayName}"
     }
+
+    private fun changeColors(prevState: State, action: Action.ColorsChanged): State =
+            prevState.copy(colors = action.colors)
 }

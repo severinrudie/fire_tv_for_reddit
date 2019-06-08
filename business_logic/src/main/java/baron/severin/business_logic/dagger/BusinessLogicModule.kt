@@ -82,7 +82,8 @@ object BusinessLogicModule {
                     text = ResourcesCompat.getColor(resources, R.color.color_default_text, null),
                     unread = ResourcesCompat.getColor(resources, R.color.color_default_unread, null),
                     read = ResourcesCompat.getColor(resources, R.color.color_default_read, null),
-                    white = ResourcesCompat.getColor(resources, R.color.color_white, null)
+                    white = ResourcesCompat.getColor(resources, R.color.color_white, null),
+                    transparent = ResourcesCompat.getColor(resources, android.R.color.transparent, null)
             )
 
     @Provides @Named(INITIAL_STATE)

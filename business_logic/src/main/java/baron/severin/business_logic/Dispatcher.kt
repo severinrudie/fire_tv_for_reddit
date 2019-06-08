@@ -21,7 +21,8 @@ internal class Dispatcher(
             when (event) {
                 is Event.SubredditSelected ->
                     getSubreddit(event.subredditName).subscribe { actionRelay.accept(it) }
-            }
+                is Event.ColorsChanged -> actionRelay.accept(Action.ColorsChanged(event.colors))
+            }.let {  } // TODO forceExhaustive
         }
     }
 

@@ -13,6 +13,7 @@ import dagger.android.support.HasSupportFragmentInjector
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.toolbar.*
 import seveida.firetvforreddit.ext.isSelect
+import seveida.firetvforreddit.settings.SettingsFragment
 import seveida.firetvforreddit.subreddit.SubredditFragment
 import java.lang.ref.WeakReference
 import javax.inject.Inject
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.mainContentFragmentContainer, SubredditFragment())
+            .replace(R.id.settingsFragmentContainer, SettingsFragment()) // TODO do this / animate on event
             .commit()
     }
 
@@ -48,7 +50,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = dispatchingFragmentInjector
 
     private fun setupToolbar() {
-        toolbarStyler.observeToolbarState(WeakReference(this))
+        toolbarStyler.observeToolbarState(WeakReference(this), compositeDisposable)
 
         toolbarRightET.setImeActionLabel("Load Subreddit", KeyEvent.KEYCODE_ENTER)
 

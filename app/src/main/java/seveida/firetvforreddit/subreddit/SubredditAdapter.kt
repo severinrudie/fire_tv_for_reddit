@@ -54,7 +54,7 @@ class SubredditAdapter @Inject constructor(@Named(INITIAL_STATE) var colors: Col
                     ColorDrawable(colors.accent)
             )
             imageWrapperBackground.addState(
-                    intArrayOf(android.R.attr.state_focused), // Unfocused
+                    intArrayOf(-android.R.attr.state_focused), // Unfocused
                     ColorDrawable(if (thread.viewed) colors.read else colors.unread)
             )
             threadImageWrapper.background = imageWrapperBackground

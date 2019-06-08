@@ -6,5 +6,6 @@ data class Colors(
         val text: Int,
         val unread: Int,
         val read: Int,
-        val white: Int
+        val white: Int,
+        val transparent: Int
 )
