@@ -53,6 +53,8 @@ dependencies {
     // Allows the time backport to work during testing
     testImplementation(Dependencies.threeTenJava)
 
+    implementation(Dependencies.jraw)
+
     // Networking dependencies
     implementation(Dependencies.okhttp)
     implementation(Dependencies.retrofit)

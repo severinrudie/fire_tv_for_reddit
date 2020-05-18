@@ -44,6 +44,8 @@ dependencies {
     implementation(Dependencies.retrofitMoshiAdapter)
     kapt (Dependencies.moshiKapt)
 
+    implementation(Dependencies.jraw)
+
     // Testing
     testImplementation(Dependencies.robolectric)
     testImplementation(Dependencies.junit)

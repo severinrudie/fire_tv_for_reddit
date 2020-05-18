@@ -46,6 +46,9 @@ object Dependencies {
     const val retrofitMoshiAdapter = "com.squareup.retrofit2:converter-moshi:2.5.0"
     const val moshiKapt = "com.squareup.moshi:moshi-kotlin-codegen:1.6.0"
 
+    // "Java Reddit API Wrapper"
+    const val jraw = "net.dean.jraw:JRAW-Android:1.1.0"
+
     // Java Time backport
     const val threeTenAndroid = "com.jakewharton.threetenabp:threetenabp:1.1.2"
     // Allows the time backport to work during testing
